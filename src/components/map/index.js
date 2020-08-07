@@ -1,145 +1,47 @@
-import 'mapbox-gl/dist/mapbox-gl.css';
-import 'react-map-gl-geocoder/dist/mapbox-gl-geocoder.css';
-import React, { useState, useRef } from 'react';
-import MapGL, { Marker, Popup } from 'react-map-gl';
-import DeckGL, { GeoJsonLayer } from 'deck.gl';
-import Geocoder from 'react-map-gl-geocoder';
+import React from 'react';
+import {
+  GoogleMap,
+  withScriptjs,
+  withGoogleMap,
+  Marker,
+} from 'react-google-maps';
 import * as pbdb from '../../data/846db.json';
 
-function App() {
-  /////////////////////////////////////////////////////////////////////////////////// STATE
-  const [viewport, setViewport] = useState({
-    latitude: 41.4211,
-    longitude: -74.6903,
-    width: '75vw',
-    height: '75vh',
-    zoom: 4,
-  });
-  const [selectedStation, setSelectedStation] = useState(null);
-  const [searchResultLayer, setSearchResultsLayer] = useState(null);
+const noise = coord => {
+  const scale = 2 * 0.1;
+  return parseFloat(coord) + scale * (Math.random() - 0.5);
+};
 
-  ///////////////////////////////////////////////////////////////////////////////////  REF
-  const mapRef = useRef();
-  const geocoderContainerRef = useRef();
-
-  /////////////////////////////////////////////////////////////////////////////////// HANDLERS
-  const handleViewportChange = newViewport => {
-    setViewport({ ...viewport, ...newViewport });
-  };
-
-  const handleMarkerChange = newViewport => {
-    const geocoderDefaultOverrides = { transitionDuration: 1000 };
-    setViewport({ ...viewport, ...newViewport, ...geocoderDefaultOverrides });
-  };
-
-  const handleGeocoderViewportChange = viewport => {
-    const geocoderDefaultOverrides = { transitionDuration: 6500 };
-    return handleViewportChange({
-      ...viewport,
-      ...geocoderDefaultOverrides,
-    });
-  };
-
-  const handleOnResult = event => {
-    setSearchResultsLayer(
-      new GeoJsonLayer({
-        id: 'search-result',
-        data: event.result.geometry,
-        getFillColor: [255, 0, 0, 128],
-        getRadius: 1000,
-        pointRadiusMinPixels: 10,
-        pointRadiusMaxPixels: 10,
-      })
-    );
-  };
-
+function Map() {
   return (
-    <>
-      <div>
-        <div
-          ref={geocoderContainerRef}
-          style={{
-            height: 50,
-            display: 'flex',
-            alignItems: 'center',
+    <GoogleMap
+      defaultZoom={10}
+      defaultCenter={{ lat: 45.421532, lng: -75.697189 }}
+    >
+      {pbdb.data.map(incident => (
+        <Marker
+          key={incident.id}
+          position={{
+            lat: noise(incident.geocoding.lat),
+            lng: noise(incident.geocoding.long),
           }}
-        />
-        <MapGL
-          ref={mapRef}
-          {...viewport}
-          onViewportChange={handleViewportChange}
-          mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
-          mapStyle="mapbox://styles/mapbox/streets-v11"
-        >
-          <Geocoder
-            mapRef={mapRef}
-            containerRef={geocoderContainerRef}
-            onResult={handleOnResult}
-            onViewportChange={handleGeocoderViewportChange}
-            mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
-          />
-          <DeckGL {...viewport} layers={[searchResultLayer]}>
-            {pbdb.data.map(station => (
-              <Marker
-                key={station.id}
-                longitude={parseFloat(station.geocoding.long)}
-                latitude={parseFloat(station.geocoding.lat)}
-              >
-                <button
-                  className="marker-btn"
-                  onClick={e => {
-                    e.preventDefault();
-                    setSelectedStation(station);
-                    handleMarkerChange({
-                      zoom: 11,
-                      latitude: parseFloat(station.geocoding.lat),
-                      longitude: parseFloat(station.geocoding.long),
-                    });
-                  }}
-                >
-                  <img
-                    src="iconmap.png"
-                    alt="map marker icon"
-                    width="20px"
-                    height="20px"
-                    backgroundColor="black"
-                  />
-                </button>
-              </Marker>
-            ))}
-            {selectedStation ? (
-              <Popup
-                latitude={parseFloat(selectedStation.geocoding.lat)}
-                longitude={parseFloat(selectedStation.geocoding.long)}
-                onClose={() => {
-                  setSelectedStation(null);
-                }}
-                closeOnClick={false}
-              >
-                <div>
-                  <h2>{selectedStation.title}</h2>
-                  <h3>
-                    {selectedStation.city}, {selectedStation.state}
-                  </h3>
-                  <p>{selectedStation.date}</p>
-                  {selectedStation.links.map(link => (
-                    <p>
-                      Link:{' '}
-                      <a href={link}>
-                        <br></br>
-                        {link}
-                      </a>
-                    </p>
-                  ))}
-                  <p>{selectedStation.description}</p>
-                </div>
-              </Popup>
-            ) : null}
-          </DeckGL>
-        </MapGL>
-      </div>
-    </>
+        ></Marker>
+      ))}
+    </GoogleMap>
   );
 }
 
-export default App;
+const WrappedMap = withScriptjs(withGoogleMap(Map));
+
+export default function App() {
+  return (
+    <div style={{ width: '100vw', height: '100vh' }}>
+      <WrappedMap
+        googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyCdgQinpBF_rWLJIJJzG9ZhiXDuHtTzz8U`}
+        loadingElement={<div style={{ height: '100%' }} />}
+        containerElement={<div style={{ height: '100%' }} />}
+        mapElement={<div style={{ height: '100%' }} />}
+      />
+    </div>
+  );
+}
