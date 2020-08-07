@@ -2,3 +2,8 @@
   background: none;
   border: none;
 }
+
+.mapboxgl-popup {
+  max-width: 25%;
+  overflow-wrap: anywhere;
+}
