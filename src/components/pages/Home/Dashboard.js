@@ -4,7 +4,7 @@ import Map from '../../map/index';
 const Dashboard = () => {
   return (
     <>
-      <p>---__-_-_-__----_Dashboard__-__-___--_----____--_-_-</p>
+      <p>Dashboard</p>
       <Map />
     </>
   );
