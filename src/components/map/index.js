@@ -6,13 +6,10 @@ import {
   Marker,
   InfoWindow,
 } from 'react-google-maps';
+import '../../main.css';
+import mapStyles from './mapStyles';
 
 import * as pbdb from '../../data/846db.json';
-
-const noise = coord => {
-  const scale = 2 * 0.1;
-  return parseFloat(coord) + scale * (Math.random() - 0.5);
-};
 
 const newData = pbdb.data.map(item => {
   const x = item.geocoding.lat;
@@ -20,8 +17,8 @@ const newData = pbdb.data.map(item => {
   return {
     ...item,
     geocoding: {
-      lat: parseFloat(x) + 2 * 0.05 * (Math.random() - 0.5),
-      long: parseFloat(y) + 2 * 0.05 * (Math.random() - 0.5),
+      lat: parseFloat(x) + 2 * 0.04 * (Math.random() - 0.5),
+      long: parseFloat(y) + 2 * 0.04 * (Math.random() - 0.5),
     },
   };
 });
@@ -32,42 +29,46 @@ function Map() {
   const [selectedIncident, setSelectedIncident] = useState(null);
   return (
     <GoogleMap
-      defaultZoom={4.5}
+      defaultZoom={4.0}
+      maxZoom={10}
       defaultCenter={{ lat: 40.98832580000001, lng: -102.26435190000001 }}
+      defaultOptions={{ styles: mapStyles }}
     >
       {newData.map(incident => (
-        <Marker
-          key={incident.id}
-          position={{
-            lat: parseFloat(incident.geocoding.lat),
-            lng: parseFloat(incident.geocoding.long),
-          }}
-          onClick={() => {
-            setSelectedIncident(incident);
-          }}
-        ></Marker>
+        <div>
+          <Marker
+            key={incident.id}
+            position={{
+              lat: parseFloat(incident.geocoding.lat),
+              lng: parseFloat(incident.geocoding.long),
+            }}
+            onClick={() => {
+              setSelectedIncident(incident);
+            }}
+          ></Marker>
+        </div>
       ))}
       {selectedIncident && (
-        // <InfoWindow
-        //   position={{
-        //     lat: parseFloat(selectedIncident.geocoding.lat),
-        //     lng: parseFloat(selectedIncident.geocoding.long),
-        //   }}
-        //   onCloseClick={() => {
-        //     setSelectedIncident(null);
-        //   }}
-        // >
-        <div>
-          <h2>Incident Information:</h2>
-          <h3>{selectedIncident.title}</h3>
-          <p>
-            Location: {selectedIncident.city}, {selectedIncident.state}{' '}
-          </p>
-          <p>Date:{selectedIncident.date}</p>
-          <p></p>
-          <p></p>
-        </div>
-        // </InfoWindow>
+        <InfoWindow
+          position={{
+            lat: parseFloat(selectedIncident.geocoding.lat),
+            lng: parseFloat(selectedIncident.geocoding.long),
+          }}
+          onCloseClick={() => {
+            setSelectedIncident(null);
+          }}
+        >
+          <div>
+            <h2>Incident Information:</h2>
+            <h3>{selectedIncident.title}</h3>
+            <p>
+              Location: {selectedIncident.city}, {selectedIncident.state}{' '}
+            </p>
+            <p>Date:{selectedIncident.date}</p>
+            <p></p>
+            <p></p>
+          </div>
+        </InfoWindow>
       )}
     </GoogleMap>
   );
@@ -75,9 +76,11 @@ function Map() {
 const WrappedMap = withScriptjs(withGoogleMap(Map));
 export default function App() {
   return (
-    <div style={{ width: '75vw', height: '75vh' }}>
+    <div style={{ width: '40vw', height: '40vh' }}>
       <WrappedMap
-        googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyCdgQinpBF_rWLJIJJzG9ZhiXDuHtTzz8U`}
+        googleMapURL={
+          'https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyCdgQinpBF_rWLJIJJzG9ZhiXDuHtTzz8U'
+        }
         loadingElement={<div style={{ height: '100%' }} />}
         containerElement={<div style={{ height: '100%' }} />}
         mapElement={<div style={{ height: '100%' }} />}
