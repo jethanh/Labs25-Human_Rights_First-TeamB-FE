@@ -29,9 +29,8 @@ function Map() {
   const [selectedIncident, setSelectedIncident] = useState(null);
   return (
     <GoogleMap
-      defaultZoom={4.0}
-      maxZoom={10}
-      defaultCenter={{ lat: 40.98832580000001, lng: -102.26435190000001 }}
+      defaultZoom={14}
+      defaultCenter={{ lat: 40.7188, lng: -73.9901 }}
       defaultOptions={{ styles: mapStyles }}
     >
       {newData.map(incident => (
