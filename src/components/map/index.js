@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import {
   GoogleMap,
   withScriptjs,
@@ -10,6 +10,8 @@ import '../../main.css';
 import mapStyles from './mapStyles';
 
 import * as pbdb from '../../data/846db.json';
+
+import MarkerClusterer from 'react-google-maps/lib/components/addons/MarkerClusterer';
 
 const newData = pbdb.data.map(item => {
   const x = item.geocoding.lat;
@@ -27,15 +29,61 @@ console.log(newData);
 
 function Map() {
   const [selectedIncident, setSelectedIncident] = useState(null);
+
   return (
     <GoogleMap
-      defaultZoom={14}
+      defaultZoom={5}
       defaultCenter={{ lat: 40.7188, lng: -73.9901 }}
       defaultOptions={{ styles: mapStyles }}
+      yesIWantToUseGoogleMapApiInternals
     >
-      {newData.map(incident => (
-        <div>
+      <MarkerClusterer
+        clusterClass="clusterClass"
+        gridSize={80}
+        minimumClusterSize={5}
+        styles={[
+          {
+            textColor: 'white',
+            height: 55,
+            url: 'trc50.png',
+            width: 55,
+            textSize: 24,
+          },
+          {
+            textColor: 'white',
+            height: 55,
+            url: 'trc50.png',
+            width: 55,
+            textSize: 24,
+          },
+          {
+            textColor: 'white',
+            height: 55,
+            url: 'trc50.png',
+            width: 55,
+            textSize: 24,
+          },
+          {
+            textColor: 'white',
+            height: 55,
+            url: 'trc50.png',
+            width: 55,
+            textSize: 24,
+          },
+          {
+            textColor: 'white',
+            height: 55,
+            url: 'trc50.png',
+            width: 55,
+            textSize: 24,
+          },
+        ]}
+      >
+        {newData.map(incident => (
           <Marker
+            icon={{
+              url: 'tri30.png',
+            }}
             key={incident.id}
             position={{
               lat: parseFloat(incident.geocoding.lat),
@@ -45,33 +93,34 @@ function Map() {
               setSelectedIncident(incident);
             }}
           ></Marker>
-        </div>
-      ))}
-      {selectedIncident && (
-        <InfoWindow
-          position={{
-            lat: parseFloat(selectedIncident.geocoding.lat),
-            lng: parseFloat(selectedIncident.geocoding.long),
-          }}
-          onCloseClick={() => {
-            setSelectedIncident(null);
-          }}
-        >
-          <div>
-            <h2>Incident Information:</h2>
-            <h3>{selectedIncident.title}</h3>
-            <p>
-              Location: {selectedIncident.city}, {selectedIncident.state}{' '}
-            </p>
-            <p>Date:{selectedIncident.date}</p>
-            <p></p>
-            <p></p>
-          </div>
-        </InfoWindow>
-      )}
+        ))}
+        {selectedIncident && (
+          <InfoWindow
+            position={{
+              lat: parseFloat(selectedIncident.geocoding.lat),
+              lng: parseFloat(selectedIncident.geocoding.long),
+            }}
+            onCloseClick={() => {
+              setSelectedIncident(null);
+            }}
+          >
+            <div>
+              <h2>Incident Information:</h2>
+              <h3>{selectedIncident.title}</h3>
+              <p>
+                Location: {selectedIncident.city}, {selectedIncident.state}{' '}
+              </p>
+              <p>Date:{selectedIncident.date}</p>
+              <p></p>
+              <p></p>
+            </div>
+          </InfoWindow>
+        )}
+      </MarkerClusterer>
     </GoogleMap>
   );
 }
+
 const WrappedMap = withScriptjs(withGoogleMap(Map));
 export default function App() {
   return (
