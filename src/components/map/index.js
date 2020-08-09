@@ -16,18 +16,13 @@ import clusterStyles from './clusterStyles';
 import * as pbdb from '../../data/846db.json';
 ////////////////////////////////////////////////////////////////////////////////////// GLOBAL TINGS
 const newData = pbdb.data.map(item => {
-  //create a buffer between stacked markers
-  const buffer = Math.random() - 0.5;
-
-  //scales the marker spread (adjustable)
-  const scale = 2 * 0.04;
-
-  //adds the buffer & scale to each coordinate & returns entire JSON object //
+  const x = item.geocoding.lat;
+  const y = item.geocoding.long;
   return {
     ...item,
     geocoding: {
-      lat: parseFloat(item.geocoding.lat) + scale * buffer,
-      long: parseFloat(item.geocoding.long) + scale * buffer,
+      lat: parseFloat(x) + 2 * 0.04 * (Math.random() - 0.5),
+      long: parseFloat(y) + 2 * 0.04 * (Math.random() - 0.5),
     },
   };
 });
