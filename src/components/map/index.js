@@ -16,13 +16,14 @@ import clusterStyles from './clusterStyles';
 import * as pbdb from '../../data/846db.json';
 ////////////////////////////////////////////////////////////////////////////////////// GLOBAL TINGS
 const newData = pbdb.data.map(item => {
-  const x = item.geocoding.lat;
-  const y = item.geocoding.long;
+  // This spreads out markers that so we don't have hundreds of markers on the same coords,
+  // allows for better vizualization of the data being represented.
+  // TODO: Explore spidering in the future, onto the rest of the project for now.
   return {
     ...item,
     geocoding: {
-      lat: parseFloat(x) + 2 * 0.04 * (Math.random() - 0.5),
-      long: parseFloat(y) + 2 * 0.04 * (Math.random() - 0.5),
+      lat: parseFloat(item.geocoding.lat) + 2 * 0.04 * (Math.random() - 0.5),
+      long: parseFloat(item.geocoding.long) + 2 * 0.04 * (Math.random() - 0.5),
     },
   };
 });
