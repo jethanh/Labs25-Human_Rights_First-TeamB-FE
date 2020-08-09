@@ -1,4 +1,6 @@
+////////////////////////////////////////////////////////////////////////////////////// IMPORTS
 import React, { useState, useRef } from 'react';
+import MarkerClusterer from 'react-google-maps/lib/components/addons/MarkerClusterer';
 import {
   GoogleMap,
   withScriptjs,
@@ -6,27 +8,31 @@ import {
   Marker,
   InfoWindow,
 } from 'react-google-maps';
+
 import '../../main.css';
 import mapStyles from './mapStyles';
+import clusterStyles from './clusterStyles';
 
 import * as pbdb from '../../data/846db.json';
-
-import MarkerClusterer from 'react-google-maps/lib/components/addons/MarkerClusterer';
-
+////////////////////////////////////////////////////////////////////////////////////// GLOBAL TINGS
 const newData = pbdb.data.map(item => {
-  const x = item.geocoding.lat;
-  const y = item.geocoding.long;
+  //create a buffer between stacked markers
+  const buffer = Math.random() - 0.5;
+
+  //scales the marker spread (adjustable)
+  const scale = 2 * 0.04;
+
+  //adds the buffer & scale to each coordinate & returns entire JSON object
   return {
     ...item,
     geocoding: {
-      lat: parseFloat(x) + 2 * 0.04 * (Math.random() - 0.5),
-      long: parseFloat(y) + 2 * 0.04 * (Math.random() - 0.5),
+      lat: parseFloat(item.geocoding.lat) + scale * buffer,
+      long: parseFloat(item.geocoding.long) + scale * buffer,
     },
   };
 });
 
-console.log(newData);
-
+////////////////////////////////////////////////////////////////////////////////////// MAP
 function Map() {
   const [selectedIncident, setSelectedIncident] = useState(null);
 
@@ -41,43 +47,7 @@ function Map() {
         clusterClass="clusterClass"
         gridSize={80}
         minimumClusterSize={5}
-        styles={[
-          {
-            textColor: 'white',
-            height: 55,
-            url: 'trc50.png',
-            width: 55,
-            textSize: 24,
-          },
-          {
-            textColor: 'white',
-            height: 55,
-            url: 'trc50.png',
-            width: 55,
-            textSize: 24,
-          },
-          {
-            textColor: 'white',
-            height: 55,
-            url: 'trc50.png',
-            width: 55,
-            textSize: 24,
-          },
-          {
-            textColor: 'white',
-            height: 55,
-            url: 'trc50.png',
-            width: 55,
-            textSize: 24,
-          },
-          {
-            textColor: 'white',
-            height: 55,
-            url: 'trc50.png',
-            width: 55,
-            textSize: 24,
-          },
-        ]}
+        styles={clusterStyles}
       >
         {newData.map(incident => (
           <Marker
@@ -120,15 +90,14 @@ function Map() {
     </GoogleMap>
   );
 }
-
+////////////////////////////////////////////////////////////////////////////////////// EXPORTED MAP
 const WrappedMap = withScriptjs(withGoogleMap(Map));
+
 export default function App() {
   return (
     <div style={{ width: '40vw', height: '40vh' }}>
       <WrappedMap
-        googleMapURL={
-          'https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyCdgQinpBF_rWLJIJJzG9ZhiXDuHtTzz8U'
-        }
+        googleMapURL={process.env.REACT_APP_GOOGLE_TOKEN}
         loadingElement={<div style={{ height: '100%' }} />}
         containerElement={<div style={{ height: '100%' }} />}
         mapElement={<div style={{ height: '100%' }} />}
@@ -136,3 +105,4 @@ export default function App() {
     </div>
   );
 }
+////////////////////////////////////////////////////////////////////////////////////// END

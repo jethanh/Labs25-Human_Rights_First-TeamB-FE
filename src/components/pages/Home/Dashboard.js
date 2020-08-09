@@ -5,13 +5,18 @@ const Dashboard = () => {
   return (
     <>
       <div className="header">
-        <img src="/hrf-logo.png" />
+        {' '}
+        {/* The whitespace before the blue navbar */}
+        <img src="/hrf-logo.png" /> {/* header logo image */}
       </div>
-      <div className="nav-bar"></div>
-
+      <div className="nav-bar"></div> {/* HRF Blue nav bar */}
       <div className="main-container">
-        <div className="left-cta"></div>
+        {' '}
+        {/* Currently holds everything below the blue nav */}
+        <div className="left-cta"></div> {/* Left side grey area */}
         <div className="map-container">
+          {' '}
+          {/* Holds Map + h3 header */}
           <div>
             <h3>Incidents of Police Brutality</h3>
           </div>
