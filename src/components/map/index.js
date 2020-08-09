@@ -22,7 +22,7 @@ const newData = pbdb.data.map(item => {
   //scales the marker spread (adjustable)
   const scale = 2 * 0.04;
 
-  //adds the buffer & scale to each coordinate & returns entire JSON object
+  //adds the buffer & scale to each coordinate & returns entire JSON object //
   return {
     ...item,
     geocoding: {
