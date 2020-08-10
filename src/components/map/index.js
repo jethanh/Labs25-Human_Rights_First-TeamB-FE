@@ -126,9 +126,7 @@ export default function App() {
   return (
     <div style={{ width: '40vw', height: '40vh' }}>
       <WrappedMap
-        googleMapURL={
-          'https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyCdgQinpBF_rWLJIJJzG9ZhiXDuHtTzz8U'
-        }
+        googleMapURL={process.env.REACT_APP_GOOGLE_TOKEN}
         loadingElement={<div style={{ height: '100%' }} />}
         containerElement={<div style={{ height: '100%' }} />}
         mapElement={<div style={{ height: '100%' }} />}
