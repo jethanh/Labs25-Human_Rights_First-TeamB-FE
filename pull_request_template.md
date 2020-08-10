@@ -2,7 +2,7 @@
 
 # Type of Change
 - [X] New Feature
-- [ ] Bug Fix
+- [X] Bug Fix
 - [ ] Feature improvement
 
 # Status
