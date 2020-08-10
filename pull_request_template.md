@@ -1,7 +1,7 @@
 # Description
 
 # Type of Change
-- [ ] New Feature
+- [X] New Feature
 - [ ] Bug Fix
 - [ ] Feature improvement
 
