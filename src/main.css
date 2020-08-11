@@ -66,7 +66,7 @@
   font-size: 16px;
 }
 .sibling {
-  background-color: #015096;
+  background-color: #003767;
   color: white;
 }
 .searchBar {
@@ -78,6 +78,7 @@
 .colContent {
   background-color: #015096;
 }
-.colContent a:link {
+.colContent a:link,
+.colContent a:visited {
   color: rgb(241, 212, 212);
 }
