@@ -33,7 +33,7 @@
   justify-content: space-between;
 }
 
-.map-container {
+.map-containerIn {
   padding-top: 2%;
   padding-right: 30%;
 }
@@ -43,4 +43,41 @@
 .clusterClass {
   background-color: rgba(255, 0, 0, 0.466);
   border-radius: 50%;
+}
+
+.searchList {
+  height: 400px;
+  border: solid black 1px;
+  overflow-y: auto;
+}
+
+.trigger-sibling {
+  text-decoration: underline;
+  font-weight: 700;
+}
+.Collapsible {
+  background-color: #003767;
+}
+.Collapsible span {
+  margin: 0 auto;
+  font-weight: 700;
+  cursor: pointer;
+  color: white;
+  font-size: 16px;
+}
+.sibling {
+  background-color: #015096;
+  color: white;
+}
+.searchBar {
+  width: 30%;
+}
+.links {
+  width: 30%;
+}
+.colContent {
+  background-color: #015096;
+}
+.colContent a:link {
+  color: rgb(241, 212, 212);
 }
