@@ -20,6 +20,7 @@ const Dashboard = () => {
           </div>
           <Map />
         </div>
+
         <div className="searchBar">
           <SearchEvents
             searchValue={searchValue}
