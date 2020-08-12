@@ -18,13 +18,13 @@ const Dashboard = () => {
             <h3>Incidents of Police Brutality</h3>
           </div>
           <Map />
-        </div>
-        <div className="searchBar">
-          <SearchEvents
-            searchValue={searchValue}
-            setSearchValue={setSearchValue}
-          />
-          <ListDb searchValue={searchValue} />
+          <div className="searchBar">
+            <SearchEvents
+              searchValue={searchValue}
+              setSearchValue={setSearchValue}
+            />
+            <ListDb searchValue={searchValue} />
+          </div>
         </div>
       </div>
     </>

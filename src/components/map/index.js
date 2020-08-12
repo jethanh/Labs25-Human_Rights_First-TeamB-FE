@@ -124,7 +124,7 @@ function Map() {
 const WrappedMap = withScriptjs(withGoogleMap(Map));
 export default function App() {
   return (
-    <div style={{ width: '40vw', height: '40vh' }}>
+    <div style={{ width: '60vw', height: '50vh' }}>
       <WrappedMap
         googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyCdgQinpBF_rWLJIJJzG9ZhiXDuHtTzz8U"
         loadingElement={<div style={{ height: '100%' }} />}
