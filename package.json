@@ -27,6 +27,9 @@
     "react-plotly.js": "^2.4.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
+    "react-tabs": "^3.1.1",
+    "react-twitter-embed": "^3.0.3",
+    "twitter-url-parser": "0.0.1",
     "use-supercluster": "^0.2.8"
   },
   "scripts": {
