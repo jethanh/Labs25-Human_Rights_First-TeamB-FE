@@ -34,7 +34,7 @@ const newData = pbdb.data.map(item => {
   //     ...the coordinates are identical, we need to spread them out reasonably. )          //
   //                                                                                         //
   //                                                                                         //
-  //       TODO: Explore spidering markers - a bit more technically demanding.               //
+  //       TODO: Explore spidering markers - a bit more technically demanding!               //
   /////////////////////////////////////////////////////////////////////////////////////////////
 
   return {
