@@ -1,4 +1,14 @@
-////////////////////////////////////////////////////////////////////////////////////// IMPORTS
+//__/\\\_________________/\\\\\\\\\_____/\\\\\\\\\\\\\_______/\\\\\\\\\\\__________________________/\\\\\\\\\_______/\\\\\\\\\\\\\\\_
+// _\/\\\_______________/\\\\\\\\\\\\\__\/\\\/////////\\\___/\\\/////////\\\______________________/\\\///////\\\____\/\\\///////////__
+//  _\/\\\______________/\\\/////////\\\_\/\\\_______\/\\\__\//\\\______\///______________________\///______\//\\\___\/\\\_____________
+//   _\/\\\_____________\/\\\_______\/\\\_\/\\\\\\\\\\\\\\____\////\\\_______________________________________/\\\/____\/\\\\\\\\\\\\_____
+//    _\/\\\_____________\/\\\\\\\\\\\\\\\_\/\\\/////////\\\______\////\\\_________________________________/\\\//______\////////////\\\___
+//     _\/\\\_____________\/\\\/////////\\\_\/\\\_______\/\\\_________\////\\\___________________________/\\\//____________________\//\\\__
+//      _\/\\\_____________\/\\\_______\/\\\_\/\\\_______\/\\\__/\\\______\//\\\________________________/\\\/____________/\\\________\/\\\__
+//       _\/\\\\\\\\\\\\\\\_\/\\\_______\/\\\_\/\\\\\\\\\\\\\/__\///\\\\\\\\\\\/________________________/\\\\\\\\\\\\\\\_\//\\\\\\\\\\\\\/___
+//        _\///////////////__\///________\///__\/////////////______\///////////_________________________\///////////////___\/////////////_____
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// IMPORTS
 import React, { useState, useRef } from 'react';
 import MarkerClusterer from 'react-google-maps/lib/components/addons/MarkerClusterer';
 import {
@@ -14,11 +24,19 @@ import mapStyles from './mapStyles';
 import clusterStyles from './clusterStyles';
 
 import * as pbdb from '../../data/846db.json';
-////////////////////////////////////////////////////////////////////////////////////// GLOBAL TINGS
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// GLOBAL TINGS
 const newData = pbdb.data.map(item => {
-  // This spreads out markers that so we don't have hundreds of markers on the same coords,
-  // allows for better vizualization of the data being represented.
-  // TODO: Explore spidering in the future, onto the rest of the project for now.
+  /////////////////////////////////////////////////////////////////////////////////////////////
+  // This spreads out markers that so we don't have hundreds of markers on the same coords.  //
+  // Data coming from social media doesn't always provide exact coordinates.                 //
+  // coordinates are usually derived from the area mentioned in the post via geocoding.      //
+  // ( i.e. Hundreds of incidents are reported in Portland via Twitter...                    //
+  //     ...the coordinates are identical, we need to spread them out reasonably. )          //
+  //                       Is this a worthy sacrifice?                                       //
+  //                                                                                         //
+  //       TODO: Explore spidering markers - a bit more technically demanding.               //
+  /////////////////////////////////////////////////////////////////////////////////////////////
+
   return {
     ...item,
     geocoding: {
@@ -28,7 +46,7 @@ const newData = pbdb.data.map(item => {
   };
 });
 
-////////////////////////////////////////////////////////////////////////////////////// MAP
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// MAP
 function Map() {
   const [selectedIncident, setSelectedIncident] = useState(null);
 
@@ -47,9 +65,7 @@ function Map() {
       >
         {newData.map(incident => (
           <Marker
-            icon={{
-              url: 'tri30.png',
-            }}
+            markerClass="clusterClass"
             key={incident.id}
             position={{
               lat: parseFloat(incident.geocoding.lat),
@@ -86,7 +102,7 @@ function Map() {
     </GoogleMap>
   );
 }
-////////////////////////////////////////////////////////////////////////////////////// EXPORTED MAP
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// EXPORTED MAP
 const WrappedMap = withScriptjs(withGoogleMap(Map));
 
 export default function App() {
@@ -101,4 +117,4 @@ export default function App() {
     </div>
   );
 }
-////////////////////////////////////////////////////////////////////////////////////// END
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// END
