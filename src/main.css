@@ -33,9 +33,10 @@
   justify-content: space-between;
 }
 
-.map-containerIn {
+.map-container {
   padding-top: 2%;
-  padding-right: 30%;
+  /* padding-right: 30%; */
+  margin-left: 2%;
 }
 .clusterClass img {
   display: none;
@@ -49,6 +50,8 @@
   height: 400px;
   border: solid black 1px;
   overflow-y: auto;
+  position: absolute;
+  width: 45%;
 }
 
 .trigger-sibling {
