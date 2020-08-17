@@ -17,6 +17,7 @@ import {
   TwitterOnAirButton,
 } from 'react-twitter-embed';
 import Parse from 'twitter-url-parser';
+import AsyncHooks from '../searchDb/searchSubmit';
 
 export default function ListDb({ searchValue }) {
   const [selectedEntry, setSelectedEntry] = useState(null);
@@ -29,55 +30,59 @@ export default function ListDb({ searchValue }) {
   console.log(selectedEntry);
 
   return (
-    <div className="searchList">
-      {filteredEvents.map(entry => (
-        <Collapsible
-          onTriggerOpening={() => {
-            setSelectedEntry(entry);
+    <>
+      <div>
+        <AsyncHooks />
+      </div>
+      <div className="searchList">
+        <button>Search</button>
+        {filteredEvents.map(entry => (
+          <Collapsible
+            onTriggerOpening={() => {
+              setSelectedEntry(entry);
+            }}
+            // onTriggerClosing={() => {
+            //   setSelectedEntry('');
+            // }}
+            trigger={entry.title}
+            triggerSibling={() => (
+              <>
+                <div className="sibling">
+                  {entry.city}, {entry.state}.{' '}
+                  <Moment format="dddd-DD-MMMM-YYYY">{entry.date}</Moment>
+                </div>
 
-            console.log('hello');
-          }}
-          // onTriggerClosing={() => {
-          //   setSelectedEntry('');
-          // }}
-          trigger={entry.title}
-          triggerSibling={() => (
-            <>
-              <div className="sibling">
-                {entry.city}, {entry.state}.{' '}
-                <Moment format="dddd-DD-MMMM-YYYY">{entry.date}</Moment>
-              </div>
-
-              <hr></hr>
-            </>
-          )}
-          lazyRender={'true'}
-          transitionTime={100}
-          overflowWhenOpen={'hidden'}
-        >
-          <Tabs>
-            <TabList>
-              <Tab>Embedded</Tab>
-              <Tab>Links</Tab>
-            </TabList>
-            <TabPanel>
-              <TwitterVideoEmbed id={'1287828370995081217'} />
-            </TabPanel>
-            <TabPanel>
-              <div className="colContent">
-                <p>Links:</p>
-                {entry.links.map(link => (
-                  <p>
-                    <a href={link} target="_blank">
-                      {link}
-                    </a>
-                  </p>
-                ))}
-              </div>
-            </TabPanel>
-          </Tabs>
-        </Collapsible>
-      ))}
-    </div>
+                <hr></hr>
+              </>
+            )}
+            lazyRender="true"
+            transitionTime={100}
+            overflowWhenOpen="hidden"
+          >
+            <Tabs>
+              <TabList>
+                <Tab>Embedded</Tab>
+                <Tab>Links</Tab>
+              </TabList>
+              <TabPanel>
+                <TwitterVideoEmbed id={'1287828370995081217'} />
+              </TabPanel>
+              <TabPanel>
+                <div className="colContent">
+                  <p>Links:</p>
+                  {entry.links.map(link => (
+                    <p>
+                      <a href={link} target="_blank">
+                        {link}
+                      </a>
+                    </p>
+                  ))}
+                </div>
+              </TabPanel>
+            </Tabs>
+          </Collapsible>
+        ))}
+      </div>
+    </>
   );
 }
