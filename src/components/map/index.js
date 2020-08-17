@@ -32,7 +32,7 @@ const newData = pbdb.data.map(item => {
   // coordinates are usually derived from the area mentioned in the post via geocoding.      //
   // ( i.e. Hundreds of incidents are reported in Portland via Twitter...                    //
   //     ...the coordinates are identical, we need to spread them out reasonably. )          //
-  //                       Is this a worthy sacrifice?                                       //
+  //                                                                                         //
   //                                                                                         //
   //       TODO: Explore spidering markers - a bit more technically demanding.               //
   /////////////////////////////////////////////////////////////////////////////////////////////
@@ -107,7 +107,7 @@ const WrappedMap = withScriptjs(withGoogleMap(Map));
 
 export default function App() {
   return (
-    <div style={{ width: '40vw', height: '40vh' }}>
+    <div style={{ width: '60vw', height: '50vh' }}>
       <WrappedMap
         googleMapURL={process.env.REACT_APP_GOOGLE_TOKEN}
         loadingElement={<div style={{ height: '100%' }} />}
