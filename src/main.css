@@ -35,8 +35,7 @@
 
 .map-container {
   padding-top: 2%;
-  /* padding-right: 30%; */
-  margin-left: 2%;
+  padding-right: 30%;
 }
 .clusterClass img {
   display: none;
