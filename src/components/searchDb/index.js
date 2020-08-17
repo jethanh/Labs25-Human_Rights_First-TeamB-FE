@@ -20,7 +20,7 @@ import Parse from 'twitter-url-parser';
 import AsyncHooks from '../searchDb/searchSubmit';
 
 export default function ListDb({ searchValue }) {
-  const [selectedEntry, setSelectedEntry] = useState('');
+  const [selectedEntry, setSelectedEntry] = useState(null);
   const filteredEvents = pbdb.data.filter(
     entry =>
       entry.city.toLowerCase().includes(searchValue.toLowerCase()) ||

@@ -23,19 +23,20 @@
 }
 
 .left-cta {
-  height: 100vh;
+  height: 200vh;
   width: 15%;
   background-color: #e8e8e8;
 }
 
 .main-container {
   display: flex;
-  justify-content: space-between;
 }
 
 .map-container {
   padding-top: 2%;
-  padding-right: 30%;
+  display: flex;
+  flex-direction: column;
+  margin-left: 10%;
 }
 .clusterClass img {
   display: none;
@@ -46,11 +47,9 @@
 }
 
 .searchList {
-  height: 400px;
+  height: 10%;
   border: solid black 1px;
   overflow-y: auto;
-  position: absolute;
-  width: 45%;
 }
 
 .trigger-sibling {
@@ -61,7 +60,6 @@
   background-color: #003767;
 }
 .Collapsible span {
-  margin: 0 auto;
   font-weight: 700;
   cursor: pointer;
   color: white;
@@ -84,4 +82,8 @@
 .colContent a:link,
 .colContent a:visited {
   color: rgb(241, 212, 212);
+}
+
+.searches {
+  max-width: 50%;
 }

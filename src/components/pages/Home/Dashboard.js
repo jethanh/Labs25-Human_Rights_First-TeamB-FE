@@ -11,15 +11,15 @@ const Dashboard = () => {
         <img src="/hrf-logo.png" />
       </div>
       <div className="nav-bar"></div>
-
       <div className="main-container">
         <div className="left-cta"></div>
+
         <div className="map-container">
           <div>
             <h3>Incidents of Police Brutality</h3>
           </div>
           <Map />
-          <div className="searchBar">
+          <div className="searches">
             <AsyncHooks />
           </div>
         </div>
