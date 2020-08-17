@@ -8,23 +8,18 @@ const Dashboard = () => {
   return (
     <>
       <div className="header">
-        {' '}
-        {/* The whitespace before the blue navbar */}
-        <img src="/hrf-logo.png" /> {/* header logo image */}
+        <img src="/hrf-logo.png" />
       </div>
-      <div className="nav-bar"></div> {/* HRF Blue nav bar */}
+      <div className="nav-bar"></div>
       <div className="main-container">
-        {' '}
-        {/* Currently holds everything below the blue nav */}
-        <div className="left-cta"></div> {/* Left side grey area */}
+        <div className="left-cta"></div>
+
         <div className="map-container">
-          {' '}
-          {/* Holds Map + h3 header */}
           <div>
             <h3>Incidents of Police Brutality</h3>
           </div>
           <Map />
-          <div className="searchBar">
+          <div className="searches">
             <AsyncHooks />
           </div>
         </div>
