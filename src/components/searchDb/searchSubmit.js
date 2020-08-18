@@ -50,6 +50,9 @@ export default function AsyncHooks() {
   const [search, setSearch] = useState('');
   const [query, setQuery] = useState('');
   const [results, loading] = useHook(query);
+  const [middle, setMiddle] = useState('');
+  // Middle is used to as middle layer between main state and query state.
+  // This is required to prevent the component from automatically updating onChange.
   console.log(search);
   console.log(results);
 
@@ -67,47 +70,55 @@ export default function AsyncHooks() {
         onSubmit={e => {
           e.preventDefault();
           setQuery(search);
+          setQuery(middle);
+          setSearch(middle); // set our search state/main state to reflect the middle state.
         }}
       >
         <input
-          value={search}
-          onChange={e => setSearch(e.target.value)}
+          value={middle}
+          onChange={
+            e => {
+              setMiddle(e.target.value);
+            } // set our middle layer of state
+          }
           placeholder="Search"
         />
         <button type="submit">Search</button>
       </form>
       <br />
-      {loading ? (
-        <h1>LOADING</h1>
-      ) : (
-        filteredResults.map(entry => (
-          <>
-            <Collapsible
-              trigger={entry.title}
-              triggerSibling={() => (
-                <>
-                  <div className="sibling">
-                    {entry.city}, {entry.state}.{' '}
-                    <Moment format="dddd-DD-MMMM-YYYY">{entry.date}</Moment>
-                  </div>
+      <div className="searchResults">
+        {loading ? (
+          <h1>LOADING</h1>
+        ) : (
+          filteredResults.map(entry => (
+            <>
+              <Collapsible
+                trigger={entry.title}
+                triggerSibling={() => (
+                  <>
+                    <div className="sibling">
+                      {entry.city}, {entry.state}.{' '}
+                      <Moment format="dddd-DD-MMMM-YYYY">{entry.date}</Moment>
+                    </div>
 
-                  <hr></hr>
-                </>
-              )}
-              lazyRender={true}
-              transitionTime={100}
-              overflowWhenOpen={'hidden'}
-            >
-              <h3>
-                {entry.title} -- {entry.date}
-              </h3>
-              <p>
-                {entry.city}, {entry.state}
-              </p>
-            </Collapsible>
-          </>
-        ))
-      )}
+                    <hr></hr>
+                  </>
+                )}
+                lazyRender={true}
+                transitionTime={100}
+                overflowWhenOpen={'hidden'}
+              >
+                <h3>
+                  {entry.title} -- {entry.date}
+                </h3>
+                <p>
+                  {entry.city}, {entry.state}
+                </p>
+              </Collapsible>
+            </>
+          ))
+        )}
+      </div>
     </div>
   );
 }

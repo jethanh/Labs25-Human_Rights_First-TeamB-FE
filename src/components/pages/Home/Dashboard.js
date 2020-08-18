@@ -19,8 +19,13 @@ const Dashboard = () => {
             <h3>Incidents of Police Brutality</h3>
           </div>
           <Map />
-          <div className="searches">
-            <AsyncHooks />
+          <div className="below-map">
+            <div className="searches">
+              <AsyncHooks />
+            </div>
+            <div className="placeholder">
+              <p>placeholder area</p>
+            </div>
           </div>
         </div>
       </div>
