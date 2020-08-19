@@ -2,8 +2,8 @@
 
 # Type of Change
 [ ] New Feature
-[ ] Bug Fix
 [ ] Feature improvement
+[ ] Bug Fix
 
 # Status
 [ ] Tested
