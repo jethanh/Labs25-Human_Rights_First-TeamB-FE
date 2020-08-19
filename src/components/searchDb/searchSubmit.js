@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Loader from 'react-loader-spinner';
 import {
   TwitterTimelineEmbed,
   TwitterShareButton,
@@ -64,31 +65,43 @@ export default function AsyncHooks() {
   );
   console.log(filteredResults);
   return (
-    <div>
-      <h1>Search Events </h1>
-      <form
-        onSubmit={e => {
-          e.preventDefault();
-          setQuery(search);
-          setQuery(middle);
-          setSearch(middle); // set our search state/main state to reflect the middle state.
-        }}
-      >
-        <input
-          value={middle}
-          onChange={
-            e => {
-              setMiddle(e.target.value);
-            } // set our middle layer of state
-          }
-          placeholder="Search"
-        />
-        <button type="submit">Search</button>
-      </form>
-      <br />
+    <div className="search-div">
+      <div className="form-div">
+        <form
+          onSubmit={e => {
+            e.preventDefault();
+            setQuery(search);
+            setQuery(middle);
+            setSearch(middle); // set our search state/main state to reflect the middle state.
+          }}
+        >
+          <h3>Search Events</h3>
+          <input
+            className="search-form"
+            value={middle}
+            onChange={
+              e => {
+                setMiddle(e.target.value);
+              } // set our middle layer of state
+            }
+            placeholder="i.e. New York..."
+          />
+          <button className="search-button" type="submit">
+            {' > '}
+          </button>
+        </form>
+      </div>
       <div className="searchResults">
         {loading ? (
-          <h1>LOADING</h1>
+          <div className="Loader">
+            <Loader
+              type="TailSpin"
+              color="#bc541e"
+              height={75}
+              width={75}
+              timeout={3000} //3 secs
+            />
+          </div>
         ) : (
           filteredResults.map(entry => (
             <>
@@ -100,17 +113,15 @@ export default function AsyncHooks() {
                       {entry.city}, {entry.state}.{' '}
                       <Moment format="dddd-DD-MMMM-YYYY">{entry.date}</Moment>
                     </div>
-
-                    <hr></hr>
                   </>
                 )}
                 lazyRender={true}
                 transitionTime={100}
                 overflowWhenOpen={'hidden'}
               >
-                <h3>
+                <p>
                   {entry.title} -- {entry.date}
-                </h3>
+                </p>
                 <p>
                   {entry.city}, {entry.state}
                 </p>
