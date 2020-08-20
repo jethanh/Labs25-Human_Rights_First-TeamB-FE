@@ -52,10 +52,10 @@ export default function AsyncHooks() {
   const [query, setQuery] = useState('');
   const [results, loading] = useHook(query);
   const [middle, setMiddle] = useState('');
+
   // Middle is used to as middle layer between main state and query state.
-  // This is required to prevent the component from automatically updating onChange.
-  console.log(search);
-  console.log(results);
+  // This is used to prevent the component from automatically updating onChange.
+  // We only want state to update under the hood, and render new components onSubmit.
 
   const filteredResults = results.filter(
     item =>
@@ -63,15 +63,15 @@ export default function AsyncHooks() {
       item.state.toLowerCase().includes(search.toLowerCase()) ||
       item.city.toLowerCase().includes(search.toLowerCase())
   );
-  console.log(filteredResults);
+
   return (
     <div className="search-div">
       <div className="form-div">
         <form
           onSubmit={e => {
             e.preventDefault();
-            setQuery(search);
-            setQuery(middle);
+            setQuery(search); // Query the first search
+            setQuery(middle); // Query the middle state
             setSearch(middle); // set our search state/main state to reflect the middle state.
           }}
         >

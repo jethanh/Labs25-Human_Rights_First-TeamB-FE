@@ -1,3 +1,4 @@
+/* Will likely need to clean up our CSS */
 .marker-btn {
   background: none;
   border: none;
@@ -101,7 +102,6 @@
 
 .placeholder {
   width: 50%;
-  border: 2px solid red;
   height: 41.1vh;
 }
 
@@ -173,4 +173,9 @@
   border: 1px solid #003767;
   height: 3vh;
   width: 10%;
+}
+
+.placeholder img {
+  height: 43vh;
+  width: 100%;
 }

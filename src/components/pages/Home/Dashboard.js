@@ -24,7 +24,7 @@ const Dashboard = () => {
               <AsyncHooks />
             </div>
             <div className="placeholder">
-              <p>placeholder area</p>
+              <img src="/placeholder.png" alt="placeholder" />
             </div>
           </div>
         </div>
