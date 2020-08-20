@@ -1,0 +1,181 @@
+/* Will likely need to clean up our CSS */
+.marker-btn {
+  background: none;
+  border: none;
+}
+
+.mapboxgl-popup {
+  max-width: 25%;
+  overflow-wrap: anywhere;
+}
+
+.nav-bar {
+  width: 100%;
+  height: 5vh;
+  background-color: #003767;
+}
+
+.header {
+  display: flex;
+  width: 100%;
+  height: 15vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.left-cta {
+  height: 200vh;
+  width: 15%;
+  background-color: #e8e8e8;
+}
+
+.main-container {
+  display: flex;
+}
+
+.map-container {
+  padding-top: 2%;
+  display: flex;
+  flex-direction: column;
+  margin-left: 10%;
+}
+.clusterClass img {
+  display: none;
+}
+.clusterClass {
+  background-color: rgba(255, 0, 0, 0.466);
+  border-radius: 50%;
+}
+
+.searchList {
+  height: 10%;
+  border: solid black 1px;
+  overflow-y: auto;
+}
+
+.trigger-sibling {
+  text-decoration: underline;
+  font-weight: 700;
+}
+.Collapsible {
+  background-color: white;
+  margin-bottom: 1%;
+  border-left: 1px solid rgb(93, 100, 100);
+  font-family: sans-serif
+}
+.Collapsible span {
+  font-weight: 600;
+  cursor: pointer;
+  color: black;
+  font-size: 12px;
+  padding-left: 2%;
+
+  
+}
+.sibling {
+  background-color: white;
+  color: black;
+  padding-left: 2%;
+  font-size: 12px;
+  padding-bottom: .5%;
+}
+.searchBar {
+  margin-top: 2%;
+  width: 45%;
+}
+.links {
+  width: 30%;
+}
+.colContent {
+  background-color: #d3d3d3;
+}
+.colContent a:link,
+.colContent a:visited {
+  color: rgb(241, 212, 212);
+}
+
+.searches {
+  width: 50%;
+  min-width: 50%;
+  max-width: 0;
+}
+
+.placeholder {
+  width: 50%;
+  height: 41.1vh;
+}
+
+.below-map {
+  display: flex;
+  flex-direction: row;
+  max-width: 100%;
+  margin-top: 2%;
+  border-top: 2px solid #003767;
+  border-bottom: 2px solid #003767;
+  padding-bottom: 2%;
+  padding-top: 2%;
+}
+
+.searchResults {
+  max-height: 33.5vh;
+  overflow-y: scroll;
+  
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+.Loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-div {
+  background-color: white;
+}
+
+.search-form {
+  width: 75%;
+  margin-right: 3%;
+  font-family: sans-serif;
+  border-radius: 0;
+  border: 1px solid rgb(93, 100, 100);
+  padding-left: 2%;
+  height: 3vh;
+}
+
+.form-div {
+  padding-bottom: 2%;
+
+}
+
+.search-button {
+  font-family: sans-serif;
+  color: white;
+  background-color: #003767;
+  border: 1px solid #003767;
+  height: 3vh;
+  width: 10%;
+}
+
+.placeholder img {
+  height: 43vh;
+  width: 100%;
+}
