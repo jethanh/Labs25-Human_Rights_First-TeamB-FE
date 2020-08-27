@@ -119,12 +119,12 @@ export default function AsyncHooks() {
                 transitionTime={100}
                 overflowWhenOpen={'hidden'}
               >
-                <p>
-                  {entry.title} -- {entry.date}
-                </p>
-                <p>
-                  {entry.city}, {entry.state}
-                </p>
+                {entry.links.map(element => (
+                  <a href={element} className="search-links">
+                    {' '}
+                    &#8226; {element} <br />{' '}
+                  </a>
+                ))}
               </Collapsible>
             </>
           ))
