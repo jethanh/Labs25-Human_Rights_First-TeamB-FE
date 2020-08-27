@@ -120,7 +120,7 @@ export default function AsyncHooks() {
                 overflowWhenOpen={'hidden'}
               >
                 {entry.links.map(element => (
-                  <a href={element} className="search-links">
+                  <a href={element} className="search-links" target="_blank">
                     {' '}
                     &#8226; {element} <br />{' '}
                   </a>

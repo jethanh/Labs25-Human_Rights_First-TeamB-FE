@@ -8,7 +8,7 @@ import {
   Marker,
   InfoWindow,
 } from 'react-google-maps';
-
+import Moment from 'react-moment';
 import '../../main.css';
 import mapStyles from './mapStyles';
 import clusterStyles from './clusterStyles';
@@ -82,7 +82,12 @@ function Map() {
               <p>
                 Location: {selectedIncident.city}, {selectedIncident.state}{' '}
               </p>
-              <p>Date:{selectedIncident.date}</p>
+              <p>
+                Date:
+                <Moment format="dddd, MMMM DD, YYYY">
+                  {selectedIncident.date}
+                </Moment>
+              </p>
               <p></p>
               <p></p>
             </div>
