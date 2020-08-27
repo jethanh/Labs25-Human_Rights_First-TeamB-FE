@@ -8,9 +8,29 @@ const Dashboard = () => {
   return (
     <>
       <div className="header">
-        <img src="/hrf-logo.png" />
+        <div>
+          <img src="/hrf-logo.png" />
+        </div>
+        <div className="header-right">
+          <div className="header-buttons">
+            <button className="buttonA">ASYLUM</button>
+            <button className="buttonB">DONATE</button>
+            <button className="buttonC">TAKE ACTION</button>
+          </div>
+        </div>
       </div>
-      <div className="nav-bar"></div>
+      <div className="nav-bar">
+        <div className="nav-contents">
+          <ul className="nav-list">
+            <li>ABOUT</li>
+            <li>CAMPAIGNS</li>
+            <li>TOPICS</li>
+            <li>RESOURCES</li>
+            <li>MEDIA</li>
+            <li>VETS FOR AMERICAN IDEALS</li>
+          </ul>
+        </div>
+      </div>
       <div className="main-container">
         <div className="left-cta"></div>
 
