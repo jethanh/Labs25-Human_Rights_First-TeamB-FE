@@ -27,10 +27,10 @@ const Dashboard = () => {
             <a href="https://www.youtube.com/user/HumanRightsFirstOrg">
               <FontAwesomeIcon icon={['fab', 'youtube-square']} />
             </a>
-            <a href="https://www.youtube.com/user/HumanRightsFirstOrg">
+            <a href="https://www.facebook.com/humanrightsfirst">
               <FontAwesomeIcon icon={['fab', 'facebook-square']} />
             </a>
-            <a href="https://www.youtube.com/user/HumanRightsFirstOrg">
+            <a href="https://twitter.com/humanrights1st">
               <FontAwesomeIcon icon={['fab', 'twitter']} />
             </a>
           </div>
