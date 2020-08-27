@@ -120,7 +120,7 @@ export default function AsyncHooks() {
                 overflowWhenOpen={'hidden'}
               >
                 {entry.links.map(element => (
-                  <p className="search-links"> {element} </p>
+                  <p className="search-links"> &#8226; {element} </p>
                 ))}
               </Collapsible>
             </>
