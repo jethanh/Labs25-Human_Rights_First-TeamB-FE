@@ -261,3 +261,9 @@ li {
   height: 43vh;
   width: 100%;
 }
+
+.search-links {
+  color: #003767;
+  font-size: 12px;
+  padding-left: 5%;
+}
