@@ -53,7 +53,7 @@ const Dashboard = () => {
 
         <div className="map-container">
           <div>
-            <h3>Incidents of Police Brutality</h3>
+            <h2 className="map-header">Incidents of Police Brutality</h2>
           </div>
           <Map />
           <div className="below-map">

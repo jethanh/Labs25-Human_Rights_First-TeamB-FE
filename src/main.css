@@ -267,3 +267,7 @@ li {
   overflow-y: auto;
   height: 60px;
 }
+
+.map-header {
+  font-weight: 600;
+}
