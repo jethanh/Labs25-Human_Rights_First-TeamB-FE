@@ -8,7 +8,7 @@ import {
   Marker,
   InfoWindow,
 } from 'react-google-maps';
-
+import Moment from 'react-moment';
 import '../../main.css';
 import mapStyles from './mapStyles';
 import clusterStyles from './clusterStyles';
@@ -82,8 +82,23 @@ function Map() {
               <p>
                 Location: {selectedIncident.city}, {selectedIncident.state}{' '}
               </p>
-              <p>Date:{selectedIncident.date}</p>
-              <p></p>
+              <p>
+                Date:
+                <Moment format="dddd, MMMM DD, YYYY">
+                  {selectedIncident.date}
+                </Moment>
+              </p>
+              <div className="refLinks">
+                <p>
+                  {' '}
+                  {selectedIncident.links.map(element => (
+                    <a href={element} className="search-links" target="_blank">
+                      {' '}
+                      &#8226; {element} <br />{' '}
+                    </a>
+                  ))}
+                </p>
+              </div>
               <p></p>
             </div>
           </InfoWindow>
