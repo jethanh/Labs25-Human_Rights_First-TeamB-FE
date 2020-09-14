@@ -12,33 +12,39 @@ import Moment from 'react-moment';
 import '../../main.css';
 import mapStyles from './mapStyles';
 import clusterStyles from './clusterStyles';
-
-import * as pbdb from '../../data/846db.json';
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// GLOBAL TINGS
-const newData = pbdb.data.map(item => {
-  /////////////////////////////////////////////////////////////////////////////////////////////
-  // This spreads out markers that so we don't have hundreds of markers on the same coords.  //
-  // Data coming from social media doesn't always provide exact coordinates.                 //
-  // coordinates are usually derived from the area mentioned in the post via geocoding.      //
-  // ( i.e. Hundreds of incidents are reported in Portland via Twitter...                    //
-  //     ...the coordinates are identical, we need to spread them out reasonably. )          //
-  //                                                                                         //
-  //                                                                                         //
-  //       TODO: Explore spidering markers - a bit more technically demanding!               //
-  /////////////////////////////////////////////////////////////////////////////////////////////
-
-  return {
-    ...item,
-    geocoding: {
-      lat: parseFloat(item.geocoding.lat) + 2 * 0.04 * (Math.random() - 0.5),
-      long: parseFloat(item.geocoding.long) + 2 * 0.04 * (Math.random() - 0.5),
-    },
-  };
-});
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// MAP
+import useSwr from 'swr';
+//////////////  fetcher /////////
+const fetcher = (...args) => fetch(...args).then(response => response.json());
+////////////////////////////////////// MAP //////////////
 function Map() {
   const [selectedIncident, setSelectedIncident] = useState(null);
+  const mapRef = useRef();
+  const url = 'https://labs25-hrf-teamb-api.herokuapp.com/api';
+  const { data, error } = useSwr(url, fetcher);
+  const events = data && !error ? data : [];
+  const newData = events.map(item => {
+    /////////////////////////////////////////////////////////////////////////////////////////////
+    // This spreads out markers that so we don't have hundreds of markers on the same coords.  //
+    // Data coming from social media doesn't always provide exact coordinates.                 //
+    // coordinates are usually derived from the area mentioned in the post via geocoding.      //
+    // ( i.e. Hundreds of incidents are reported in Portland via Twitter...                    //
+    //     ...the coordinates are identical, we need to spread them out reasonably. )        //
+    //                                                                                        //
+    //       TODO: Explore spidering markers - a bit more technically demanding!               //
+    /////////////////////////////////////////////////////////////////////////////////////////////
+
+    return {
+      ...item,
+      geocoding: {
+        lat:
+          parseFloat(item.Event.geocoding.lat) +
+          2 * 0.04 * (Math.random() - 0.5),
+        long:
+          parseFloat(item.Event.geocoding.long) +
+          2 * 0.04 * (Math.random() - 0.5),
+      },
+    };
+  });
 
   return (
     <GoogleMap
@@ -58,8 +64,8 @@ function Map() {
             markerClass="clusterClass"
             key={incident.id}
             position={{
-              lat: parseFloat(incident.geocoding.lat),
-              lng: parseFloat(incident.geocoding.long),
+              lat: parseFloat(incident.Event.geocoding.lat),
+              lng: parseFloat(incident.Event.geocoding.long),
             }}
             onClick={() => {
               setSelectedIncident(incident);
@@ -69,8 +75,8 @@ function Map() {
         {selectedIncident && (
           <InfoWindow
             position={{
-              lat: parseFloat(selectedIncident.geocoding.lat),
-              lng: parseFloat(selectedIncident.geocoding.long),
+              lat: parseFloat(selectedIncident.Event.geocoding.lat),
+              lng: parseFloat(selectedIncident.Event.geocoding.long),
             }}
             onCloseClick={() => {
               setSelectedIncident(null);
@@ -78,20 +84,21 @@ function Map() {
           >
             <div>
               <h2>Incident Information:</h2>
-              <h3>{selectedIncident.title}</h3>
+              <h3>{selectedIncident.Event.title}</h3>
               <p>
-                Location: {selectedIncident.city}, {selectedIncident.state}{' '}
+                Location: {selectedIncident.Event.city},{' '}
+                {selectedIncident.Event.state}{' '}
               </p>
               <p>
                 Date:
                 <Moment format="dddd, MMMM DD, YYYY">
-                  {selectedIncident.date}
+                  {selectedIncident.Event.date}
                 </Moment>
               </p>
               <div className="refLinks">
                 <p>
                   {' '}
-                  {selectedIncident.links.map(element => (
+                  {selectedIncident.Event.links.map(element => (
                     <a href={element} className="search-links" target="_blank">
                       {' '}
                       &#8226; {element} <br />{' '}
