@@ -3,7 +3,7 @@
 (embed this) https://gyazo.com/76e9d7a0a8c091d0bbfb777ba8dfab0e
 
 
-## Front End:
+## Front End
    - React
    - Google Maps API
    - Timeline & Collapisible Components
