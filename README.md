@@ -4,7 +4,16 @@ In this project we are tasked with mapping out incidents of police brutality/exc
 
 A GIF displaying basic functionality can be found here: https://gyazo.com/76e9d7a0a8c091d0bbfb777ba8dfab0e (todo: embed this in readme).
 
-## Google Maps API
+
+# Front End:
+  ### - React
+  ### - Google Maps API
+  ### - Timeline & Collapisible Components
+  ### - AntDesign
+  ### - LESS
+
+## Key Features
+### Interactive Map
 
 After testing out a few different maps APIs, including MapBox, we found that the Google Maps API would be the most suitable for this project. It allows us to render upwards of 1000 different markers, cluster them, and maintain interactability with each of the markers. It may be worth exploring heatmaps going forward in this project.
 
