@@ -4,11 +4,11 @@
 
 
 ## Front End:
-  ### - React
-  ### - Google Maps API
-  ### - Timeline & Collapisible Components
-  ### - AntDesign
-  ### - LESS
+   - React
+   - Google Maps API
+   - Timeline & Collapisible Components
+   - AntDesign
+   - LESS
 
 ## Key Features
 ### Interactive Map
