@@ -70,9 +70,11 @@ export default function AsyncHooks() {
         <form
           onSubmit={e => {
             e.preventDefault();
+            // had to come up with a little hack so that state doesn't update component when changing search input
             setQuery(search); // Query the first search
             setQuery(middle); // Query the middle state
             setSearch(middle); // set our search state/main state to reflect the middle state.
+            // store the input in a 'middle' state that doesn't directly update component. Update component onSubmit.
           }}
         >
           <h3>Search Events</h3>

@@ -6,6 +6,8 @@ import AsyncHooks from '../../searchDb/searchSubmit';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
+import PbTimeline from '../../timeline/timeline';
+import HeaderNav from '../Home/HeaderNav';
 
 library.add(fab);
 
@@ -13,47 +15,15 @@ const Dashboard = () => {
   const [searchValue, setSearchValue] = useState('');
   return (
     <>
-      <div className="header">
-        <div>
-          <img src="/hrf-logo.png" />
-        </div>
-        <div className="header-right">
-          <div className="header-buttons">
-            <button className="buttonA">ASYLUM</button>
-            <button className="buttonB">DONATE</button>
-            <button className="buttonC">TAKE ACTION</button>
-          </div>
-          <div className="social-icons">
-            <a href="https://www.youtube.com/user/HumanRightsFirstOrg">
-              <FontAwesomeIcon icon={['fab', 'youtube-square']} />
-            </a>
-            <a href="https://www.facebook.com/humanrightsfirst">
-              <FontAwesomeIcon icon={['fab', 'facebook-square']} />
-            </a>
-            <a href="https://twitter.com/humanrights1st">
-              <FontAwesomeIcon icon={['fab', 'twitter']} />
-            </a>
-          </div>
-        </div>
-      </div>
-      <div className="nav-bar">
-        <div className="nav-contents">
-          <ul className="nav-list">
-            <li>ABOUT</li>
-            <li>CAMPAIGNS</li>
-            <li>TOPICS</li>
-            <li>RESOURCES</li>
-            <li>MEDIA</li>
-            <li>VETS FOR AMERICAN IDEALS</li>
-          </ul>
-        </div>
-      </div>
+      <HeaderNav />
       <div className="main-container">
-        <div className="left-cta"></div>
-
+        {' '}
+        {/* Everything under header/nav is inside this main-container */}
+        <div className="left-cta"></div>{' '}
+        {/* left-cta is the left side grey area and anythihng inside of it */}
         <div className="map-container">
           <div>
-            <h3>Incidents of Police Brutality</h3>
+            <h2>Incidents of Police Brutality</h2>
           </div>
           <Map />
           <div className="below-map">
@@ -63,6 +33,9 @@ const Dashboard = () => {
             <div className="placeholder">
               <img src="/placeholder.png" alt="placeholder" />
             </div>
+          </div>
+          <div className="timeline-container">
+            <PbTimeline />
           </div>
         </div>
       </div>

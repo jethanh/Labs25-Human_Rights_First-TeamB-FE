@@ -106,7 +106,7 @@ li {
 }
 
 .left-cta {
-  height: 200vh;
+  height: 100;
   width: 15%;
   background-color: #e8e8e8;
 }
@@ -268,4 +268,15 @@ li {
   padding-left: 5%;
   line-height: 10px;
   margin-top: 1%;
+}
+
+.timeline-container {
+  width: 100%;
+  padding-top: 0;
+  margin-bottom: 5%;
+}
+
+
+.tl-header {
+  padding-top: 2%;
 }
