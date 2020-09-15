@@ -22,6 +22,7 @@ function Map() {
   const url = 'https://labs25-hrf-teamb-api.herokuapp.com/api';
   const { data, error } = useSwr(url, fetcher);
   const events = data && !error ? data : [];
+  // randomize the markers //////////////////////////////
   const newData = events.map(item => {
     /////////////////////////////////////////////////////////////////////////////////////////////
     // This spreads out markers that so we don't have hundreds of markers on the same coords.  //
@@ -45,7 +46,7 @@ function Map() {
       },
     };
   });
-
+  // ///////////////////////////////////////////////////////////////////////////////////
   return (
     <GoogleMap
       defaultZoom={5}
@@ -59,10 +60,10 @@ function Map() {
         minimumClusterSize={5}
         styles={clusterStyles}
       >
-        {newData.map(incident => (
+        {events.map(incident => (
           <Marker
             markerClass="clusterClass"
-            key={incident.id}
+            key={incident.ID}
             position={{
               lat: parseFloat(incident.Event.geocoding.lat),
               lng: parseFloat(incident.Event.geocoding.long),
