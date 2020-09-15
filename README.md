@@ -1,11 +1,9 @@
 # Human Rights First - Incidents of Excessive Use of Force by Police
 
-In this project we are tasked with mapping out incidents of police brutality/excessive use of force. Using React.js, Google Maps API, and other technologies, we are building a single page application that allows users to easily access information by panning over a map, using search features, adjusting a timeline, or viewing data plotted to charts.
-
-A GIF displaying basic functionality can be found here: https://gyazo.com/76e9d7a0a8c091d0bbfb777ba8dfab0e (todo: embed this in readme).
+(embed this) https://gyazo.com/76e9d7a0a8c091d0bbfb777ba8dfab0e
 
 
-# Front End:
+## Front End:
   ### - React
   ### - Google Maps API
   ### - Timeline & Collapisible Components
