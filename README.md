@@ -1,6 +1,8 @@
 # Human Rights First - Incidents of Excessive Use of Force by Police
 
-(embed this) https://gyazo.com/76e9d7a0a8c091d0bbfb777ba8dfab0e
+This is a single page application that takes data scraped from Twitter and Reddit and plots incidents of police brutality across the United States on an interactive map. A user is able to search through incidents and view them on a timeline visual.
+
+ - [GIF of Usage](https://gyazo.com/76e9d7a0a8c091d0bbfb777ba8dfab0e)
 
 
 ## Front End
@@ -11,8 +13,18 @@
    - LESS
 
 ## Key Features
-### Interactive Map
+### Interactive Map - Google Maps API
 
-After testing out a few different maps APIs, including MapBox, we found that the Google Maps API would be the most suitable for this project. It allows us to render upwards of 1000 different markers, cluster them, and maintain interactability with each of the markers. It may be worth exploring heatmaps going forward in this project.
+The Google Maps API allows us to render upwards of 1000 different markers, cluster them, and maintain interactability with each of the markers. It may be worth exploring heatmaps going forward in this project. One problem with the MapBox API was that it was extremely laggy with the amount of markers we are required to render to the map.
 
-One problem with the MapBox API was that it was extremely laggy with the amount of markers we are required to render to the map.
+### Search Functionality
+
+The search functionality is built using collapsible components. It is synced up to the backend database and processes a GET request each time a user submits a search query.
+
+### Timeline
+The timeline is built using the ```vertical-timeline-component-for-react``` package. This package allows us to save the effort of designing our own timeline and display incidents in a visual manner seperate from the interactive map.
+
+## Installation
+
+- Navigate to the root directory with this README in it.
+- ```npm install & npm start```
