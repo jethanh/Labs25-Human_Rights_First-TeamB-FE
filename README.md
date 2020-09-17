@@ -20,7 +20,7 @@ The Google Maps API allows us to render upwards of 1000 different markers, clust
 
 Could be improved:
 
--It may be worth exploring heatmaps or spidering markers going forward in this project if better coordinates data is not available.
+- It may be worth exploring heatmaps or spidering markers going forward in this project if better coordinates data is not available.
 
 ### Search Functionality
 
