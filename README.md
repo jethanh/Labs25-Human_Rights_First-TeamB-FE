@@ -15,7 +15,10 @@ This is a single page application that takes data scraped from Twitter and Reddi
 ## Key Features
 ### Interactive Map - Google Maps API
 
-The Google Maps API allows us to render upwards of 1000 different markers, cluster them, and maintain interactability with each of the markers. It may be worth exploring heatmaps going forward in this project. One problem with the MapBox API was that it was extremely laggy with the amount of markers we are required to render to the map.
+The Google Maps API allows us to render upwards of 1000 different markers, cluster them, and maintain interactability with each of the markers. 
+
+Could be improved:
+ -It may be worth exploring heatmaps going forward in this project. One problem with the MapBox API was that it was extremely laggy with the amount of markers we are required to render to the map.
 
 ### Search Functionality
 
