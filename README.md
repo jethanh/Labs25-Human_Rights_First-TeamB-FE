@@ -32,4 +32,4 @@ The timeline is built using the ```vertical-timeline-component-for-react``` pack
 ## Installation
 
 - Navigate to the root directory with this README in it.
-- ```npm install & npm start```
+- ```npm install``` & ```npm start```
