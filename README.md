@@ -3,6 +3,7 @@
 This is a single page application that takes data scraped from Twitter and Reddit and plots incidents of police brutality across the United States on an interactive map. A user is able to search through incidents and view them on a timeline visual.
 
  - [GIF of Usage](https://gyazo.com/76e9d7a0a8c091d0bbfb777ba8dfab0e)
+ - [Deployed Website](https://main.d2njpi9j1s76mb.amplifyapp.com/)
 
 
 ## Front End
