@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Map from '../../map/index';
-import ListDb from '../../searchDb/index';
-import SearchEvents from '../../searchDb/search';
 import AsyncHooks from '../../searchDb/searchSubmit';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import PbTimeline from '../../timeline/timeline';
@@ -12,7 +9,10 @@ import HeaderNav from '../Home/HeaderNav';
 library.add(fab);
 
 const Dashboard = () => {
-  const [searchValue, setSearchValue] = useState('');
+  // We should have put our API calls here and passed them down as props. This would be a good thing to refactor.
+  // Currently, API calls are made in each component. This isn't scalable and would cause an unnecessary amount
+  // of API calls given high traffic. However, on a project like this, I don't think is poses *too much* of a problem.
+
   return (
     <>
       <HeaderNav />

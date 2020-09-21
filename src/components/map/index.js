@@ -25,15 +25,15 @@ const newData = pbdb.data.map(item => {
   //     ...the coordinates are identical, we need to spread them out reasonably. )          //
   //                                                                                         //
   //                                                                                         //
-  //       TODO: Explore spidering markers - a bit more technically demanding!               //
+  //       TODO: Explore spidering markers - a bit more technically demanding                //
   /////////////////////////////////////////////////////////////////////////////////////////////
 
   return {
     ...item,
-    geocoding: {
-      lat: parseFloat(item.geocoding.lat) + 2 * 0.04 * (Math.random() - 0.5),
-      long: parseFloat(item.geocoding.long) + 2 * 0.04 * (Math.random() - 0.5),
-    },
+    // geocoding: {
+    //   lat: parseFloat(item.geocoding.lat) + 2 * 0.04 * (Math.random() - 0.5),
+    //   long: parseFloat(item.geocoding.long) + 2 * 0.04 * (Math.random() - 0.5),
+    // },
   };
 });
 
@@ -93,6 +93,7 @@ function Map() {
     </GoogleMap>
   );
 }
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// EXPORTED MAP
 const WrappedMap = withScriptjs(withGoogleMap(Map));
 
