@@ -10,8 +10,9 @@ library.add(fab);
 
 const Dashboard = () => {
   // We should have put our API calls here and passed them down as props. This would be a good thing to refactor.
-  // Currently, API calls are made in each component. This isn't scalable and would cause an unnecessary amount
-  // of API calls given high traffic. However, on a project like this, I don't think is poses *too much* of a problem.
+  // Currently, API calls are made in each component. Although it's likely not too much
+  // of in issue, it would cause an unnecessary amount of API calls given high traffic.
+  // However, on a project of this scale, I don't think is poses *too much* of a problem.
 
   return (
     <>
