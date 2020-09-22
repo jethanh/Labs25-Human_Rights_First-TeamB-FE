@@ -16,7 +16,7 @@ export default function PbTimeline() {
       await axios
         .get(`https://api.846policebrutality.com/api/incidents`)
         .then(res => {
-          setResults(latest(res.data.data, 20));
+          setResults(latest(res.data.data, 10));
         })
         .catch(err => {
           console.log(err);
@@ -46,18 +46,18 @@ export default function PbTimeline() {
             <h4>
               {item.city}, {item.state}
             </h4>
-            {item.tags.map(element => (
-              <span className="timeline-tags">{element}</span>
-            ))}
-            {/* <p>
-              Sources: <br />
-              {item.links.map(element => (
-                <a href={element}>
-                  {' '}
-                  Link {item.links.indexOf(`${element}`) + 1} <br />{' '}
+            <div className="tag-container">
+              {item.tags.map(element => (
+                <span className="timeline-tags">{element}</span>
+              ))}
+            </div>
+            <div className="timeline-links">
+              {item.links.splice(0, 3).map(element => (
+                <a href={element} className="link-button">
+                  Source
                 </a>
               ))}
-            </p> */}
+            </div>
           </TimelineItem>
         </Timeline>
       ))}

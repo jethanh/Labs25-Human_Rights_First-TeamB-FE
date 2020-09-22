@@ -18,22 +18,15 @@ const Dashboard = () => {
     <>
       <HeaderNav />
       <div className="main-container">
-        {' '}
         {/* Everything under header/nav is inside this main-container */}
-        <div className="left-cta"></div>{' '}
         {/* left-cta is the left side grey area and anythihng inside of it */}
         <div className="map-container">
-          <div>
-            <h2>Incidents of Police Brutality</h2>
-          </div>
           <Map />
           <div className="below-map">
             <div className="searches">
               <AsyncHooks />
             </div>
-            <div className="placeholder">
-              placeholder area for plotly data vizualization
-            </div>
+            <div className="placeholder"></div>
           </div>
           <div className="timeline-container">
             <PbTimeline />

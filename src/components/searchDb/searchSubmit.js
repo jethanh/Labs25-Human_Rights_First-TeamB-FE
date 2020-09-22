@@ -64,7 +64,7 @@ export default function AsyncHooks() {
             // store the input in a 'middle' state that doesn't directly update component. Update component onSubmit.
           }}
         >
-          <h3>Search Events</h3>
+          <h2>Search Events</h2>
           <input
             className="search-form"
             value={middle}
