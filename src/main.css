@@ -322,3 +322,9 @@ li {
   flex-direction: row;
   flex-wrap: wrap;
 }
+
+.tl-header{
+  width: 100%;
+  text-align: center;
+  padding-left: 8%;
+}
