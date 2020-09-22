@@ -6,7 +6,7 @@ export default function HeaderNav() {
     <>
       <div className="header">
         <div>
-          <img src="/hrf-logo.png" />
+          <img src="/hrf-logo.png" alt="hrf logo" />
         </div>
         <div className="header-right">
           <div className="header-buttons">

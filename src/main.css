@@ -178,9 +178,10 @@ li {
 }
 
 .searches {
-  width: 50%;
-  min-width: 50%;
+  width: 47%;
+  min-width: 47%;
   max-width: 0;
+  margin-right: 3%;
 }
 
 .placeholder {
@@ -199,8 +200,8 @@ li {
   padding-bottom: 2%;
   padding-top: 2%;
   align-content: center;
-  margin-left: 10%;
-  margin-right: 10%;
+  margin-left: 8%;
+  margin-right: 8%;
 }
 
 .searchResults {
@@ -239,7 +240,7 @@ li {
 }
 
 .search-form {
-  width: 75%;
+  width: 70%;
   margin-right: 3%;
   font-family: sans-serif;
   border-radius: 0;
@@ -278,7 +279,7 @@ li {
 .timeline-container {
   width: 75%;
   margin-bottom: 5%;
-  margin-left: 10%;
+  margin-left: 8%;
 }
 
 

@@ -26,7 +26,9 @@ const Dashboard = () => {
             <div className="searches">
               <AsyncHooks />
             </div>
-            <div className="placeholder"></div>
+            <div className="placeholder">
+              placeholder for data vizualization
+            </div>
           </div>
           <div className="timeline-container">
             <PbTimeline />

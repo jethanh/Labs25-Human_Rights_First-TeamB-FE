@@ -33,8 +33,8 @@ export default function PbTimeline() {
       <div className="tl-header">
         <h2>Timeline of Recent Events</h2>
       </div>
-      {results.map(item => (
-        <Timeline lineColor={'#ddd'} className="pbTimeline">
+      <Timeline lineColor={'#ddd'} className="pbTimeline">
+        {results.map(item => (
           <TimelineItem
             key={item.id}
             dateText={<Moment format="MM-DD-YYYY">{item.date}</Moment>}
@@ -59,8 +59,8 @@ export default function PbTimeline() {
               ))}
             </div>
           </TimelineItem>
-        </Timeline>
-      ))}
+        ))}
+      </Timeline>
     </>
   );
 }
