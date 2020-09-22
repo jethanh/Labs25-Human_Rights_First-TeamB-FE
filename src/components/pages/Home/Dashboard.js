@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Map from '../../map/index';
 import AsyncHooks from '../../searchDb/searchSubmit';
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -32,7 +32,7 @@ const Dashboard = () => {
               <AsyncHooks />
             </div>
             <div className="placeholder">
-              <img src="/placeholder.png" alt="placeholder" />
+              placeholder area for plotly data vizualization
             </div>
           </div>
           <div className="timeline-container">

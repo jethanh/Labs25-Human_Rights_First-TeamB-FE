@@ -107,7 +107,7 @@ li {
 
 .left-cta {
   height: 100;
-  width: 15%;
+  width: 13%;
   background-color: #e8e8e8;
 }
 
@@ -185,6 +185,7 @@ li {
 .placeholder {
   width: 50%;
   height: 41.1vh;
+  border: 1px solid black;
 }
 
 .below-map {
@@ -279,4 +280,14 @@ li {
 
 .tl-header {
   padding-top: 2%;
+}
+
+.timeline-tags {
+  margin-right: 1%;
+  padding: 2px;
+  background-color: #e8e8e8;
+  border-radius: 5%;
+  line-height: 2;
+  padding-right: 4px;
+  padding-left: 4px;
 }

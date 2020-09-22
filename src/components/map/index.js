@@ -1,7 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// IMPORTS
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import MarkerClusterer from 'react-google-maps/lib/components/addons/MarkerClusterer';
-import HeatmapLayer from 'react-google-maps/lib/components/visualization/HeatmapLayer';
 import {
   GoogleMap,
   withScriptjs,

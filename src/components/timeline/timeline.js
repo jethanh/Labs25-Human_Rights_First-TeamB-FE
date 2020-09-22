@@ -4,9 +4,9 @@ import Moment from 'react-moment';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 
-const last = function last(array, n) {
-  return array.slice(0, 20);
-};
+function latest(array, n) {
+  return array.slice(0, n);
+}
 
 export default function PbTimeline() {
   const [results, setResults] = useState([]);
@@ -16,7 +16,7 @@ export default function PbTimeline() {
       await axios
         .get(`https://api.846policebrutality.com/api/incidents`)
         .then(res => {
-          setResults(last(res.data.data));
+          setResults(latest(res.data.data, 20));
         })
         .catch(err => {
           console.log(err);
@@ -43,10 +43,12 @@ export default function PbTimeline() {
             <h3>
               <a href={item.links[0]}>{item.title}</a>
             </h3>
-            <h3>
+            <h4>
               {item.city}, {item.state}
-            </h3>
-            <h4>Keywords: {item.tags.map(item => item + ' ')}</h4>
+            </h4>
+            {item.tags.map(element => (
+              <span className="timeline-tags">{element}</span>
+            ))}
             {/* <p>
               Sources: <br />
               {item.links.map(element => (

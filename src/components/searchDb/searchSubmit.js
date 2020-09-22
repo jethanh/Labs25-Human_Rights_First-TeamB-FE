@@ -1,21 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Loader from 'react-loader-spinner';
-import {
-  TwitterTimelineEmbed,
-  TwitterShareButton,
-  TwitterFollowButton,
-  TwitterHashtagButton,
-  TwitterMentionButton,
-  TwitterTweetEmbed,
-  TwitterMomentShare,
-  TwitterDMButton,
-  TwitterVideoEmbed,
-  TwitterOnAirButton,
-} from 'react-twitter-embed';
 import Collapsible from 'react-collapsible';
 import Moment from 'react-moment';
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import Parse from 'twitter-url-parser';
+
 function useHook(query) {
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
