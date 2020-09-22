@@ -18,16 +18,16 @@ This is a single page application that takes data scraped from Twitter and Reddi
 
 The Google Maps API allows us to render upwards of 1000 different markers, cluster them, and maintain interactability with each of the markers. 
 
-Could be improved:
-
-- It may be worth exploring heatmaps or spidering markers going forward in this project if better coordinates data is not available.
-
 ### Search Functionality
 
 The search functionality is built using collapsible components. It is synced up to the backend database and processes a GET request each time a user submits a search query.
 
 ### Timeline
 The timeline is built using the ```vertical-timeline-component-for-react``` package. This package allows us to save the effort of designing our own timeline and display incidents in a visual manner seperate from the interactive map.
+
+## Room For Improvement
+- It may be worth exploring heatmaps or spidering markers going forward in this project if better coordinates data is not available.
+- It would be beneficial to move the API calls and state to a parent component, such as App.js. This would allow us to have interoperability between components and reduce the amount of API calls being made.
 
 ## Installation
 
