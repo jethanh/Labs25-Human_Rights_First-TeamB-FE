@@ -42,7 +42,7 @@ function Map() {
 
   return (
     <GoogleMap
-      defaultZoom={4}
+      defaultZoom={4.3}
       defaultCenter={{ lat: 39.8283, lng: -98.5795 }}
       defaultOptions={{ styles: mapStyles }}
       yesIWantToUseGoogleMapApiInternals
