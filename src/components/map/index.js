@@ -1,5 +1,5 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// IMPORTS
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import MarkerClusterer from 'react-google-maps/lib/components/addons/MarkerClusterer';
 import {
   GoogleMap,
