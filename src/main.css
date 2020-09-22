@@ -273,7 +273,7 @@ li {
 .timeline-container {
   width: 84%;
   margin-bottom: 5%;
-  margin-left: 8%;
+  margin-left: 16%;
   padding-right: 8%;
   margin-top: 2%;
 }
@@ -318,9 +318,8 @@ li {
 }
 
 .tl-header{
-  width: 100%;
+  width: 80%;
   text-align: center;
-  padding-left: 8%;
 }
 
 .refLinks {

@@ -39,6 +39,7 @@ export default function PbTimeline() {
             key={item.id}
             dateText={<Moment format="LL">{item.date}</Moment>}
             style={{ color: '#bc541e' }}
+            dateInnerStyle={{ color: 'white', backgroundColor: '#003767' }}
           >
             <h3>
               <a href={item.links[0]}>{item.title}</a>
