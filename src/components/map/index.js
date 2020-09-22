@@ -49,8 +49,8 @@ function Map() {
   // ///////////////////////////////////////////////////////////////////////////////////
   return (
     <GoogleMap
-      defaultZoom={5}
-      defaultCenter={{ lat: 40.7188, lng: -73.9901 }}
+      defaultZoom={4.3}
+      defaultCenter={{ lat: 39.8283, lng: -98.5795 }}
       defaultOptions={{ styles: mapStyles }}
       yesIWantToUseGoogleMapApiInternals
     >
@@ -115,12 +115,13 @@ function Map() {
     </GoogleMap>
   );
 }
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// EXPORTED MAP
 const WrappedMap = withScriptjs(withGoogleMap(Map));
 
 export default function App() {
   return (
-    <div style={{ width: '60vw', height: '50vh' }}>
+    <div style={{ width: '100%', height: '65vh' }}>
       <WrappedMap
         googleMapURL={process.env.REACT_APP_GOOGLE_TOKEN}
         loadingElement={<div style={{ height: '100%' }} />}

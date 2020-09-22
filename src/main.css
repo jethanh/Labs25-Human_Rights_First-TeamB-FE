@@ -104,20 +104,21 @@ li {
 }
 
 .left-cta {
-  height: 200vh;
-  width: 15%;
+  height: 100;
+  width: 13%;
   background-color: #e8e8e8;
 }
 
 .main-container {
   display: flex;
+  width: 100%;
 }
 
 .map-container {
-  padding-top: 2%;
   display: flex;
   flex-direction: column;
-  margin-left: 9%;
+  align-content: center;
+  width: 100%;
 }
 .clusterClass img {
   display: none;
@@ -139,8 +140,8 @@ li {
 }
 .Collapsible {
   background-color: white;
-  margin-bottom: 3%;
-  border-left: 1px solid rgb(93, 100, 100);
+  margin-bottom: 1.5%;
+  border-left: 2px solid rgb(93, 100, 100);
   font-family: sans-serif;
 }
 .Collapsible span {
@@ -173,25 +174,30 @@ li {
 }
 
 .searches {
-  width: 50%;
-  min-width: 50%;
+  width: 47%;
+  min-width: 47%;
   max-width: 0;
+  margin-right: 3%;
 }
 
 .placeholder {
   width: 50%;
-  height: 41.1vh;
+  height: 45vh;
+  border: 1px solid black;
 }
 
 .below-map {
   display: flex;
   flex-direction: row;
   max-width: 100%;
-  margin-top: 2%;
+  margin-top: 1%;
   border-top: 2px solid #003767;
   border-bottom: 2px solid #003767;
   padding-bottom: 2%;
   padding-top: 2%;
+  align-content: center;
+  margin-left: 8%;
+  margin-right: 8%;
 }
 
 .searchResults {
@@ -229,7 +235,7 @@ li {
 }
 
 .search-form {
-  width: 75%;
+  width: 70%;
   margin-right: 3%;
   font-family: sans-serif;
   border-radius: 0;
@@ -263,6 +269,60 @@ li {
   line-height: 10px;
   margin-top: 1%;
 }
+
+.timeline-container {
+  width: 84%;
+  margin-bottom: 5%;
+  margin-left: 8%;
+  padding-right: 8%;
+  margin-top: 2%;
+}
+
+
+.timeline-tags {
+  margin-right: 1%;
+  background-color: #e8e8e8;
+  border-radius: 5%;
+  padding-right: 4px;
+  padding-left: 4px;
+  margin-bottom: 4px;
+}
+
+.timeline-links {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.link-button {
+  padding-left: 4px;
+  padding-right: 4px;
+  text-align: center;
+  margin-right: 4px;
+  margin-bottom: 4px;
+  background-color: #dadbdc;
+  border-radius: 5%;
+}
+
+.link-button:hover{
+  color: #003767;
+}
+
+.tag-container{
+  margin-bottom: 1%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.tl-header{
+  width: 100%;
+  text-align: center;
+  padding-left: 8%;
+}
+
 .refLinks {
   overflow-y: auto;
   height: 60px;

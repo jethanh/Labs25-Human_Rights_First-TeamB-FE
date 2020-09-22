@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Loader from 'react-loader-spinner';
 import Collapsible from 'react-collapsible';
 import Moment from 'react-moment';
-// // // // // // // //
+
 function useHook(query) {
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -55,12 +55,14 @@ export default function AsyncHooks() {
         <form
           onSubmit={e => {
             e.preventDefault();
+            // had to come up with a little hack so that state doesn't update component when changing search input
             setQuery(search); // Query the first search
             setQuery(middle); // Query the middle state
             setSearch(middle); // set our search state/main state to reflect the middle state.
+            // store the input in a 'middle' state that doesn't directly update component. Update component onSubmit.
           }}
         >
-          <h3>Search Events</h3>
+          <h2>Search Events</h2>
           <input
             className="search-form"
             value={middle}
