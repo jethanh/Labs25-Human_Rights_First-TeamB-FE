@@ -140,8 +140,8 @@ li {
 }
 .Collapsible {
   background-color: white;
-  margin-bottom: 3%;
-  border-left: 1px solid rgb(93, 100, 100);
+  margin-bottom: 1.5%;
+  border-left: 2px solid rgb(93, 100, 100);
   font-family: sans-serif;
 }
 .Collapsible span {
