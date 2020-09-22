@@ -5,9 +5,7 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 
 const last = function last(array, n) {
-  if (array == null) return void 0;
-  if (n == null) return array[array.length - 1];
-  return array.slice(Math.max(array.length - n, 0));
+  return array.slice(0, 20);
 };
 
 export default function PbTimeline() {
@@ -18,7 +16,7 @@ export default function PbTimeline() {
       await axios
         .get(`https://api.846policebrutality.com/api/incidents`)
         .then(res => {
-          setResults(last(res.data.data, 10));
+          setResults(last(res.data.data));
         })
         .catch(err => {
           console.log(err);
@@ -39,7 +37,7 @@ export default function PbTimeline() {
         <Timeline lineColor={'#ddd'} className="pbTimeline">
           <TimelineItem
             key={item.id}
-            dateText={item.date}
+            dateText={<Moment format="MM-DD-YYYY">{item.date}</Moment>}
             style={{ color: '#bc541e' }}
           >
             <h3>
@@ -49,7 +47,7 @@ export default function PbTimeline() {
               {item.city}, {item.state}
             </h3>
             <h4>Keywords: {item.tags.map(item => item + ' ')}</h4>
-            <p>
+            {/* <p>
               Sources: <br />
               {item.links.map(element => (
                 <a href={element}>
@@ -57,7 +55,7 @@ export default function PbTimeline() {
                   Link {item.links.indexOf(`${element}`) + 1} <br />{' '}
                 </a>
               ))}
-            </p>
+            </p> */}
           </TimelineItem>
         </Timeline>
       ))}
