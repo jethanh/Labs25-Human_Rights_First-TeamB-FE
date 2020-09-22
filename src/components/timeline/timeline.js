@@ -37,7 +37,7 @@ export default function PbTimeline() {
         {results.map(item => (
           <TimelineItem
             key={item.id}
-            dateText={<Moment format="MM-DD-YYYY">{item.date}</Moment>}
+            dateText={<Moment format="LL">{item.date}</Moment>}
             style={{ color: '#bc541e' }}
           >
             <h3>
