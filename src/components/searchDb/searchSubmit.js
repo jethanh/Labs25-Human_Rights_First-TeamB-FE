@@ -1,3 +1,4 @@
+/// Imports ////
 import React, { useState, useEffect } from 'react';
 import Loader from 'react-loader-spinner';
 import Collapsible from 'react-collapsible';
@@ -12,12 +13,11 @@ function useHook(query) {
       try {
         setLoading(true);
         const response = await fetch(
-          `https://api.846policebrutality.com/api/incidents`
+          `https://labs25-hrf-teamb-api.herokuapp.com/api`
         );
         const json = await response.json();
-
         setResults(
-          json.data.map(item => {
+          json.map(item => {
             return item;
           })
         );
@@ -25,12 +25,10 @@ function useHook(query) {
         setLoading(false);
       }
     }
-
     if (query !== '') {
       fetchData();
     }
   }, [query]);
-
   return [results, loading];
 }
 
@@ -46,9 +44,9 @@ export default function AsyncHooks() {
 
   const filteredResults = results.filter(
     item =>
-      item.title.toLowerCase().includes(search.toLowerCase()) ||
-      item.state.toLowerCase().includes(search.toLowerCase()) ||
-      item.city.toLowerCase().includes(search.toLowerCase())
+      item.Event.title.toLowerCase().includes(search.toLowerCase()) ||
+      item.Event.state.toLowerCase().includes(search.toLowerCase()) ||
+      item.Event.city.toLowerCase().includes(search.toLowerCase())
   );
 
   return (
@@ -95,12 +93,14 @@ export default function AsyncHooks() {
           filteredResults.map(entry => (
             <>
               <Collapsible
-                trigger={entry.title}
+                trigger={entry.Event.title}
                 triggerSibling={() => (
                   <>
                     <div className="sibling">
-                      {entry.city}, {entry.state}.{' '}
-                      <Moment format="dddd-DD-MMMM-YYYY">{entry.date}</Moment>
+                      {entry.Event.city}, {entry.Event.state}.{' '}
+                      <Moment format="dddd-DD-MMMM-YYYY">
+                        {entry.Event.date}
+                      </Moment>
                     </div>
                   </>
                 )}
@@ -108,8 +108,8 @@ export default function AsyncHooks() {
                 transitionTime={100}
                 overflowWhenOpen={'hidden'}
               >
-                {entry.links.map(element => (
-                  <a href={element} className="search-links">
+                {entry.Event.links.map(element => (
+                  <a href={element} className="search-links" target="_blank">
                     {' '}
                     &#8226; {element} <br />{' '}
                   </a>
