@@ -27,7 +27,7 @@ The timeline is built using the ```vertical-timeline-component-for-react``` pack
 
 ## Room For Improvement
 - It may be worth exploring heatmaps or spidering markers going forward in this project if better coordinates data is not available.
-- It would be beneficial to move the API calls and state to a parent component, such as App.js. This would allow us to have interoperability between components and reduce the amount of API calls being made.
+- It would be beneficial to move the API calls and state to a parent component, such as an App.js. This would allow us to have interoperability between components and reduce the amount of API calls being made.
 - It may be worth introducing some routing for a better userflow (a new page for the timeline component for example).
 - Design could use some improvements. Unsure if the left side nav (grey area) will be used. This could be scrapped if a future group doesn't see use for it.
 
