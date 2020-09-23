@@ -318,8 +318,9 @@ li {
 }
 
 .tl-header{
-  width: 80%;
+  width: 84%;
   text-align: center;
+  margin-bottom: -2%;
 }
 
 .refLinks {

@@ -31,7 +31,7 @@ export default function PbTimeline() {
   return (
     <>
       <div className="tl-header">
-        <h2>Timeline of Recent Events</h2>
+        <h1>Timeline of Recent Events</h1>
       </div>
       <Timeline lineColor={'#ddd'} className="pbTimeline">
         {results.map(item => (
