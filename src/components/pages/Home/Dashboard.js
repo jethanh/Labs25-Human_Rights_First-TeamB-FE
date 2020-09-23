@@ -5,6 +5,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import PbTimeline from '../../timeline/timeline';
 import HeaderNav from '../Home/HeaderNav';
+import Footer from '../Home/Footer';
 
 library.add(fab);
 
@@ -35,6 +36,7 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 };
