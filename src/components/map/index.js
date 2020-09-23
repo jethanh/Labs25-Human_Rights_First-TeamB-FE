@@ -21,99 +21,107 @@ function Map() {
   const mapRef = useRef();
   const url = 'https://labs25-hrf-teamb-api.herokuapp.com/api';
   const { data, error } = useSwr(url, fetcher);
-  const events = data && !error ? data : [];
+  var events = data && !error ? data : [];
   // randomize the markers //////////////////////////////
-  const newData = events.map(item => {
-    /////////////////////////////////////////////////////////////////////////////////////////////
-    // This spreads out markers that so we don't have hundreds of markers on the same coords.  //
-    // Data coming from social media doesn't always provide exact coordinates.                 //
-    // coordinates are usually derived from the area mentioned in the post via geocoding.      //
-    // ( i.e. Hundreds of incidents are reported in Portland via Twitter...                    //
-    //     ...the coordinates are identical, we need to spread them out reasonably. )        //
-    //                                                                                        //
-    //       TODO: Explore spidering markers - a bit more technically demanding!               //
-    /////////////////////////////////////////////////////////////////////////////////////////////
 
+  const newData = events.map(item => {
     return {
       ...item,
-      geocoding: {
-        lat:
-          parseFloat(item.Event.geocoding.lat) +
-          2 * 0.04 * (Math.random() - 0.5),
-        long:
-          parseFloat(item.Event.geocoding.long) +
-          2 * 0.04 * (Math.random() - 0.5),
+      Event: {
+        ...item.Event,
+        geocoding: {
+          ...item.Event.geocoding,
+          lat:
+            parseFloat(item.Event.geocoding.lat) +
+            2 * 0.04 * (Math.random() - 0.5),
+          long:
+            parseFloat(item.Event.geocoding.long) +
+            2 * 0.04 * (Math.random() - 0.5),
+        },
       },
     };
   });
 
+  const OPTIONS = {
+    minZoom: 4,
+    maxZoom: 12,
+    styles: mapStyles,
+  };
+
   // ///////////////////////////////////////////////////////////////////////////////////
   return (
-    <GoogleMap
-      defaultZoom={4.3}
-      defaultCenter={{ lat: 39.8283, lng: -98.5795 }}
-      defaultOptions={{ styles: mapStyles }}
-      yesIWantToUseGoogleMapApiInternals
-    >
-      <MarkerClusterer
-        clusterClass="clusterClass"
-        gridSize={80}
-        minimumClusterSize={5}
-        styles={clusterStyles}
+    <>
+      <GoogleMap
+        defaultZoom={4.3}
+        options={OPTIONS}
+        defaultCenter={{ lat: 39.8283, lng: -98.5795 }}
+        defaultOptions={{ styles: mapStyles }}
+        yesIWantToUseGoogleMapApiInternals
       >
-        {events.map(incident => (
-          <Marker
-            markerClass="clusterClass"
-            key={incident.ID}
-            position={{
-              lat: parseFloat(incident.Event.geocoding.lat),
-              lng: parseFloat(incident.Event.geocoding.long),
-            }}
-            onClick={() => {
-              setSelectedIncident(incident);
-            }}
-          ></Marker>
-        ))}
-        {selectedIncident && (
-          <InfoWindow
-            position={{
-              lat: parseFloat(selectedIncident.Event.geocoding.lat),
-              lng: parseFloat(selectedIncident.Event.geocoding.long),
-            }}
-            onCloseClick={() => {
-              setSelectedIncident(null);
-            }}
-          >
-            <div>
-              <h2>Incident Information:</h2>
-              <h3>{selectedIncident.Event.title}</h3>
-              <p>
-                Location: {selectedIncident.Event.city},{' '}
-                {selectedIncident.Event.state}{' '}
-              </p>
-              <p>
-                Date:
-                <Moment format="dddd, MMMM DD, YYYY">
-                  {selectedIncident.Event.date}
-                </Moment>
-              </p>
-              <div className="refLinks">
+        <MarkerClusterer
+          clusterClass="clusterClass"
+          gridSize={80}
+          minimumClusterSize={5}
+          styles={clusterStyles}
+        >
+          {events.map(incident => (
+            <Marker
+              markerClass="clusterClass"
+              key={incident.ID}
+              position={{
+                lat: parseFloat(incident.Event.geocoding.lat),
+                lng: parseFloat(incident.Event.geocoding.long),
+              }}
+              onClick={() => {
+                setSelectedIncident(incident);
+              }}
+            ></Marker>
+          ))}
+          {selectedIncident && (
+            <InfoWindow
+              position={{
+                lat: parseFloat(selectedIncident.Event.geocoding.lat),
+                lng: parseFloat(selectedIncident.Event.geocoding.long),
+              }}
+              onCloseClick={() => {
+                setSelectedIncident(null);
+              }}
+            >
+              <div>
+                <h2>Incident Information:</h2>
+                <h3>{selectedIncident.Event.title}</h3>
                 <p>
-                  {' '}
-                  {selectedIncident.Event.links.map(element => (
-                    <a href={element} className="search-links" target="_blank">
-                      {' '}
-                      &#8226; {element} <br />{' '}
-                    </a>
-                  ))}
+                  Location: {selectedIncident.Event.city},{' '}
+                  {selectedIncident.Event.state}{' '}
                 </p>
+                <p>
+                  Date:
+                  <Moment format="dddd, MMMM DD, YYYY">
+                    {selectedIncident.Event.date}
+                  </Moment>
+                </p>
+                <div className="refLinks">
+                  <p>
+                    {' '}
+                    {selectedIncident.Event.links.map(element => (
+                      <a
+                        href={element}
+                        className="search-links"
+                        target="_blank"
+                      >
+                        {' '}
+                        &#8226; {element} <br />{' '}
+                      </a>
+                    ))}
+                  </p>
+                </div>
+                <p></p>
               </div>
-              <p></p>
-            </div>
-          </InfoWindow>
-        )}
-      </MarkerClusterer>
-    </GoogleMap>
+            </InfoWindow>
+          )}
+        </MarkerClusterer>
+      </GoogleMap>
+    </>
   );
 }
 
