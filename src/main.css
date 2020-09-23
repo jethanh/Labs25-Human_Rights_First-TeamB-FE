@@ -330,3 +330,88 @@ li {
 .map-header {
   font-weight: 600;
 }
+
+.footer-container{
+  height: 100%;
+  width: 100%;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 30px;
+}
+
+.footer-left{
+  width: 33%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-right: 3%;
+}
+
+.menu-links ul{
+  margin: 0;
+  padding-left: 0;
+}
+
+.menu-links li{
+  color: #9d9d9d;
+  font-size: 17px;
+  height: 2.5vh;
+  font-size: 15px;
+  padding-right: 15px;
+}
+
+.menu-links li:not(:last-child) {
+  border-right: 1px solid #9d9d9d;
+}
+
+.contact-info{
+  width: 100%;
+  height: 100%;
+}
+
+.cities ul{
+  align-content: center;
+  width: 60%;
+  padding: 0;
+  margin: 0;
+  justify-content: space-between;
+}
+
+.cities li{
+  color: #003767;
+  font-size: 12px;
+  font-weight: 620;
+  font-family: sans-serif;
+
+}
+
+.contact-details{
+  width: 100%;
+  white-space: normal;
+}
+
+.contact-details p{
+  width: 100%;
+  margin: 0;
+  font-size: 14px;
+  color: #9d9d9d;
+  padding-bottom: 3px;
+}
+
+.footer-right{
+  width: 20%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-buttons button{
+  margin-right: 2%;
+  height: 45px;
+  color: white;
+  font-size: 18px;
+  font-weight: 630;
+  padding-left: 10px;
+  padding-right: 10px;
+}

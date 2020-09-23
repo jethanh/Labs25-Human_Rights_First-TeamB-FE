@@ -29,8 +29,8 @@ function Map() {
     // Data coming from social media doesn't always provide exact coordinates.                 //
     // coordinates are usually derived from the area mentioned in the post via geocoding.      //
     // ( i.e. Hundreds of incidents are reported in Portland via Twitter...                    //
-    //     ...the coordinates are identical, we need to spread them out reasonably. )          //
-    //                                                                                         //
+    //     ...the coordinates are identical, we need to spread them out reasonably. )        //
+    //                                                                                        //
     //       TODO: Explore spidering markers - a bit more technically demanding!               //
     /////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -46,6 +46,7 @@ function Map() {
       },
     };
   });
+
   // ///////////////////////////////////////////////////////////////////////////////////
   return (
     <GoogleMap
