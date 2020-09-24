@@ -14,6 +14,7 @@ import mapStyles from './mapStyles';
 import clusterStyles from './clusterStyles';
 import useSwr from 'swr';
 //////////////  fetcher /////////
+
 const fetcher = (...args) => fetch(...args).then(response => response.json());
 ////////////////////////////////////// MAP //////////////
 function Map() {
@@ -22,7 +23,8 @@ function Map() {
   const url = 'https://labs25-hrf-teamb-api.herokuapp.com/api';
   const { data, error } = useSwr(url, fetcher);
   var events = data && !error ? data : [];
-  // randomize the markers //////////////////////////////
+
+  // function for randomizing markers below
 
   const newData = events.map(item => {
     return {
